@@ -11,7 +11,7 @@ Document Planning: To access, Click the [link here]()
 
 Video Walkthrough: To access, Click the [link here]()
 
-Jira Project Management: To access, Click the [link here](https://s10228111.atlassian.net/issues/?jql=project+%3D+%22PWTW%22+ORDER+BY+created+DESC&atlOrigin=eyJpIjoiYmY4NmVlZGEyMzJlNDEyODgwMmJhMWJkMTY2MjRjOTEiLCJwIjoiaiJ9)
+Jira Project Management: To access, Click the [link here](https://s10228111.atlassian.net/jira/core/projects/PWTW/list)
 
 ## Features
 
