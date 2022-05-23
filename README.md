@@ -11,8 +11,6 @@ Document Planning: To access, Click the [link here]()
 
 Video Walkthrough: To access, Click the [link here]()
 
-Github Page: To access, Click the [link here](https://github.com/alfianlion/Team-W-WITNESS)
-
 ## Features
 
 - **Login & Register** - Let users to sign up to the application to allow **_Workout Catalog_** functionality.
