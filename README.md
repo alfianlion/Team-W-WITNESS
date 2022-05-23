@@ -3,13 +3,15 @@
 "Witness" is a school project for Android. The app is designed to keep track of your workouts. Walk, Run with GPS available. Using Java as the primary language develop the app with the features available. Based on existing exercising apps, there are apps that keep track of the workouts done like running and walking but the issue with comes when serious runners or does training IPPT. The apps records the necessary information like pace, distance, heart rate but user's need to continuously look at the distance covered in the app while running. This might come as a distraction as it avoids the runner to focus on the run. The app will alarm if distance set for example, 2.4km distance run, and user can then end their run then.
 
 
-## Design Process
+## Design & Planning Process
 
 Wireframe: To access, Click the [link here]()
 
 Document Planning: To access, Click the [link here]()
 
 Video Walkthrough: To access, Click the [link here]()
+
+Jira Project Management: To access, Click the [link here](https://s10228111.atlassian.net/issues/?jql=project+%3D+%22PWTW%22+ORDER+BY+created+DESC&atlOrigin=eyJpIjoiYmY4NmVlZGEyMzJlNDEyODgwMmJhMWJkMTY2MjRjOTEiLCJwIjoiaiJ9)
 
 ## Features
 
@@ -39,7 +41,7 @@ User Testing Plan: To access, Click the [Link Here]()
 
 - Filled later
 
-### Acknowledgment
+### Acknowledgement
 
 - [Markdown Template](https://github.com/immalcolm/interactivedev-readme-template) - Making README.MD organized and clear
 - [Android Studio](https://developer.android.com/guide) - IDE to create Android Applications
