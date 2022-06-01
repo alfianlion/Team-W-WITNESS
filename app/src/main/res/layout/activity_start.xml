@@ -9,18 +9,21 @@
         android:id="@+id/mapView"
         android:layout_width="match_parent"
         android:layout_height="414dp"
+        android:background="#009688"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@color/teal_700" />
 
     <Spinner
-        android:id="@+id/workoutOption"
+        android:id="@+id/exerciseDropdown"
         android:layout_width="291dp"
         android:layout_height="72dp"
         android:layout_marginTop="20dp"
+        android:contentDescription="exercise dropdown menu"
         android:spinnerMode="dropdown"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mapView" />
 
@@ -30,30 +33,33 @@
         android:layout_height="55dp"
         android:layout_marginTop="16dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Distance                          km"
+        android:inputType="number"
+        android:text="Distance                      km "
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/workoutOption" />
+        app:layout_constraintTop_toBottomOf="@+id/exerciseDropdown" />
 
     <ImageButton
         android:id="@+id/startActivityButton"
         android:layout_width="96dp"
         android:layout_height="75dp"
         android:layout_marginTop="20dp"
+        android:contentDescription="Starts activity"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/distanceGoal"
         app:srcCompat="@android:drawable/ic_media_play" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/startActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Start Acitvity"
+        android:text="Start Activity"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/startActivityButton" />
 

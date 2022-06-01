@@ -3,17 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/School stuff/Yr2 Sem 1/MAD/Team-W-WITNESS/app/src/main/res/layout/activity_record.xml" value="0.36666666666666664" />
-        <entry key="..\:/School stuff/Yr2 Sem 1/MAD/Team-W-WITNESS/app/src/main/res/layout/activity_start.xml" value="0.36666666666666664" />
-        <entry key="..\:/School stuff/Yr2 Sem 1/MAD/Team-W-WITNESS/app/src/main/res/layout/catalogue_page.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/huixi/AndroidStudioProjects/Assignment1/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/Users/huixi/AndroidStudioProjects/Assignment1/app/src/main/res/layout/activity_record.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/huixi/AndroidStudioProjects/Assignment1/app/src/main/res/layout/activity_start.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/huixi/AndroidStudioProjects/Assignment1/app/src/main/res/layout/activty_start.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/huixi/AndroidStudioProjects/Assignment1/app/src/main/res/layout/activy_running.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/huixi/AndroidStudioProjects/Assignment1/app/src/main/res/layout/catalogue_page.xml" value="0.2" />
-        <entry key="..\:/Users/huixi/AndroidStudioProjects/Assignment1/app/src/main/res/layout/view_workout.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/huixi/AndroidStudioProjects/Assignment1/app/src/main/res/layout/workout_rsv.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/huixi/AndroidStudioProjects/wittnessFittness/app/src/main/res/layout/activity_main.xml" value="0.35778985507246375" />
+        <entry key="..\:/Users/huixi/AndroidStudioProjects/wittnessFittness/app/src/main/res/layout/activity_record.xml" value="0.1" />
+        <entry key="..\:/Users/huixi/AndroidStudioProjects/wittnessFittness/app/src/main/res/layout/activity_start.xml" value="0.1" />
+        <entry key="..\:/Users/huixi/AndroidStudioProjects/wittnessFittness/app/src/main/res/layout/catalogue_page.xml" value="0.35778985507246375" />
+        <entry key="..\:/Users/huixi/AndroidStudioProjects/wittnessFittness/app/src/main/res/layout/view_workout.xml" value="0.1" />
+        <entry key="..\:/Users/huixi/AndroidStudioProjects/wittnessFittness/app/src/main/res/layout/workout_rsv.xml" value="0.35778985507246375" />
       </map>
     </option>
   </component>

@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">Assignment 1</string>
+    <string name="app_name">wittnessFittness</string>
+    <string-array name="exerciseTypes">
+        <item>Running</item>
+        <item>Jogging</item>
+    </string-array>
 </resources>

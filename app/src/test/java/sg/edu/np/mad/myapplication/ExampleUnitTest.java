@@ -1,4 +1,4 @@
-package sg.np.edu.mad.assignment1;
+package sg.edu.np.mad.myapplication;
 
 import org.junit.Test;
 
