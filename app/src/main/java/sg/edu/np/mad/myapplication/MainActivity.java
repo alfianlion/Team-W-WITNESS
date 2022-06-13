@@ -55,8 +55,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         switch (item.getItemId()) {
             case R.id.home:
-                getSupportFragmentManager().beginTransaction().replace(R.id.emptyFrag, new home()).commit();
-                return true;
+//                getSupportFragmentManager().beginTransaction().replace(R.id.emptyFrag, new home()).commit();
+//                return true;
+                return false;
 
             case R.id.catalog:
                 getSupportFragmentManager().beginTransaction().replace(R.id.emptyFrag, new catalogue()).commit();
