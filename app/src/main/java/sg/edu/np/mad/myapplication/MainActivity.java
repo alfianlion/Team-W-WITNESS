@@ -26,14 +26,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
-//        bottomNavigationView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                FragmentTransaction f = getSupportFragmentManager().beginTransaction();
-//                f.replace(R.id.emptyFrag, new profile());
-//                f.commit();
-//            }
-//        });
         bottomNavigationView.setOnItemSelectedListener(this);
         bottomNavigationView.setSelectedItemId(R.id.catalog);
 
@@ -45,16 +37,12 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     }
 
-// ****** Fragment for bottom Navigation - Hui Xin ******
-//    FirstFragment firstFragment = new FirstFragment();
-//    SecondFragment secondFragment = new SecondFragment();
-//    ThirdFragment thirdFragment = new ThirdFragment();
-//
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         switch (item.getItemId()) {
             case R.id.home:
+//                *** Enable / uncomment only for Assignment2 ***
 //                getSupportFragmentManager().beginTransaction().replace(R.id.emptyFrag, new home()).commit();
 //                return true;
                 return false;
