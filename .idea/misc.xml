@@ -3,22 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/alfia/Desktop/School/MAD/Team-W-WITNESS/app/src/main/res/layout/activity_main.xml" value="0.10643115942028986" />
-        <entry key="..\:/Users/alfia/Desktop/School/MAD/Team-W-WITNESS/app/src/main/res/layout/activity_record.xml" value="0.25" />
-        <entry key="..\:/Users/alfia/Desktop/School/MAD/Team-W-WITNESS/app/src/main/res/layout/activity_start.xml" value="0.11822916666666666" />
-        <entry key="..\:/Users/alfia/Desktop/School/MAD/Team-W-WITNESS/app/src/main/res/layout/catalogue_page.xml" value="0.144" />
-        <entry key="..\:/Users/alfia/Desktop/School/MAD/Team-W-WITNESS/app/src/main/res/layout/fragment_blank.xml" value="0.1015625" />
-        <entry key="..\:/Users/alfia/Desktop/School/MAD/Team-W-WITNESS/app/src/main/res/layout/fragment_catalogue.xml" value="0.264" />
-        <entry key="..\:/Users/alfia/Desktop/School/MAD/Team-W-WITNESS/app/src/main/res/layout/fragment_home.xml" value="0.1015625" />
-        <entry key="..\:/Users/alfia/Desktop/School/MAD/Team-W-WITNESS/app/src/main/res/layout/fragment_profile.xml" value="0.1015625" />
-        <entry key="..\:/Users/alfia/Desktop/School/MAD/Team-W-WITNESS/app/src/main/res/layout/profile_login.xml" value="0.25" />
-        <entry key="..\:/Users/alfia/Desktop/School/MAD/Team-W-WITNESS/app/src/main/res/layout/profile_register.xml" value="0.264" />
-        <entry key="..\:/Users/alfia/Desktop/School/MAD/Team-W-WITNESS/app/src/main/res/layout/view_workout.xml" value="0.11822916666666666" />
-        <entry key="..\:/Users/alfia/Desktop/School/MAD/Team-W-WITNESS/app/src/main/res/menu/bottom_nav_menu.xml" value="0.259375" />
+        <entry key="..\:/Users/huixi/AndroidStudioProjects/wittnessFittness/app/src/main/res/layout/activity_main.xml" value="0.35778985507246375" />
+        <entry key="..\:/Users/huixi/AndroidStudioProjects/wittnessFittness/app/src/main/res/layout/activity_record.xml" value="0.1" />
+        <entry key="..\:/Users/huixi/AndroidStudioProjects/wittnessFittness/app/src/main/res/layout/activity_start.xml" value="0.1" />
+        <entry key="..\:/Users/huixi/AndroidStudioProjects/wittnessFittness/app/src/main/res/layout/catalogue_page.xml" value="0.35778985507246375" />
+        <entry key="..\:/Users/huixi/AndroidStudioProjects/wittnessFittness/app/src/main/res/layout/view_workout.xml" value="0.1" />
+        <entry key="..\:/Users/huixi/AndroidStudioProjects/wittnessFittness/app/src/main/res/layout/workout_rsv.xml" value="0.35778985507246375" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
-    <output url="file://$PROJECT_DIR$/out" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
   </component>
 </project>
