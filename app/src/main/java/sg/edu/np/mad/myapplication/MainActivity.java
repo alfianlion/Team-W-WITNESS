@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
         bottomNavigationView.setOnItemSelectedListener(this);
-        bottomNavigationView.setSelectedItemId(R.id.catalog);
+//        bottomNavigationView.setSelectedItemId(R.id.catalog);
 
 //        ***** To use the dropdown view in the Activity Start xml *****
 //        Spinner dropdownMenu = findViewById(R.id.exerciseDropdown); //Define object
