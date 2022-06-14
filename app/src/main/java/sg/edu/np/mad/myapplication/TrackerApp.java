@@ -27,7 +27,7 @@ public class TrackerApp extends FragmentActivity implements OnMapReadyCallback {
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
+                .findFragmentById(R.id.trackerMap);
         mapFragment.getMapAsync(this);
     }
 
@@ -40,6 +40,7 @@ public class TrackerApp extends FragmentActivity implements OnMapReadyCallback {
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
      */
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
