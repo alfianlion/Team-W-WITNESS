@@ -39,7 +39,6 @@ public class TrackerApp extends FragmentActivity implements OnMapReadyCallback {
      * If Google Play services is not installed on the device, the user will be prompted to install
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
-
      */
 
     @Override
