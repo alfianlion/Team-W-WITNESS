@@ -6,12 +6,12 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/workoutTiming"
+        android:id="@+id/workoutType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginTop="28dp"
-        android:text="Workout Time"
+        android:text="Workout Type"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,7 +24,7 @@
         android:text="Workout Title"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/workoutTiming" />
+        app:layout_constraintTop_toBottomOf="@+id/workoutType" />
 
     <TextView
         android:id="@+id/timeTaken"
