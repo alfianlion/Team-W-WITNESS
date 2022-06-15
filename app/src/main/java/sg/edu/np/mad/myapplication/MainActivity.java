@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 //        ArrayAdapter<CharSequence>spinnerAdapter = ArrayAdapter.createFromResource(this, R.array.exerciseTypes, R.layout.activity_start);
 //        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
 //        dropdownMenu.setAdapter(spinnerAdapter);
-
     }
 
     @Override

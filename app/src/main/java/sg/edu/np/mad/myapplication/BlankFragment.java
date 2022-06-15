@@ -1,7 +1,5 @@
 package sg.edu.np.mad.myapplication;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,14 +7,13 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link catalogue#newInstance} factory method to
+ * Use the {@link BlankFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class catalogue extends Fragment{
+public class BlankFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,7 +24,7 @@ public class catalogue extends Fragment{
     private String mParam1;
     private String mParam2;
 
-    public catalogue() {
+    public BlankFragment() {
         // Required empty public constructor
     }
 
@@ -37,11 +34,11 @@ public class catalogue extends Fragment{
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment catalogue.
+     * @return A new instance of fragment BlankFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static catalogue newInstance(String param1, String param2) {
-        catalogue fragment = new catalogue();
+    public static BlankFragment newInstance(String param1, String param2) {
+        BlankFragment fragment = new BlankFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -57,21 +54,11 @@ public class catalogue extends Fragment{
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
-    View view;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_catalogue, container, false);
-        Button addActivity = view.findViewById(R.id.addActivity);
-        addActivity.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent addActivityView = new Intent(getActivity(), selectWorkoutType.class );
-                startActivity((addActivityView));
-                ((Activity) getActivity()).overridePendingTransition(0,0);
-            }
-        });
-        return view;
+        return inflater.inflate(R.layout.fragment_blank, container, false);
     }
 }

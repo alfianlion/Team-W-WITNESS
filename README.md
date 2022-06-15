@@ -1,23 +1,24 @@
-# **WITNESS**
+# **WITNESSFITNESS**
 
-"Witness" is a school project for Android. The app is designed to keep track of your workouts. Walk, Run with GPS available. Using Java as the primary language develop the app with the features available. Based on existing exercising apps, there are apps that keep track of the workouts done like running and walking but the issue with comes when serious runners or does training IPPT. The apps records the necessary information like pace, distance, heart rate but user's need to continuously look at the distance covered in the app while running. This might come as a distraction as it avoids the runner to focus on the run. The app will alarm if distance set for example, 2.4km distance run, and user can then end their run then.
-
+"WITNESSFITNESS" is a school project for Android. The app is designed to keep track of your workouts from Running to your Gym sets. Using Java as the primary language, develop the app with the features available. Based on existing exercising apps, there are apps that keep track of the workouts done like running but the issue with comes when serious runners or does training IPPT. The app records the necessary information like pace, distance, heart rate but user's need to continuously look at the distance covered in the app while running. This might come as a distraction as it prevents the runner from focusing on the run. The app will alarm if time set for example, 11mins distance run, and user can then end their run then.
 
 ## Design & Planning Process
 
-Wireframe: To access, Click the [link here]()
+Wireframe: To access, Click the [link here](https://xd.adobe.com/view/891dd561-24ba-444c-8741-3b36dafff5da-dc4e/screen/c121357b-4547-4708-a9f4-5f6a6663e078/)
 
-Document Planning: To access, Click the [link here]()
-
-Video Walkthrough: To access, Click the [link here]()
+Idea Bank: To access, Click the [link here](https://connectnpedu.sharepoint.com/:w:/s/MADAY22P02-GroupW/EdSTD2c4kYVNkL4aXRtIKRIBE4GUBJRcWP-RsL0wGbOuvg?e=V30faL)
 
 Jira Project Management: To access, Click the [link here](https://s10228111.atlassian.net/jira/core/projects/PWTW/list)
 
+Video Walkthrough: To access, Click the [link here]()
+
 ## Features
 
-- **Login & Register** - Let users to sign up to the application to allow **_Workout Catalog_** functionality.
-- **Set Distance to Alarm** - Allow users to set their **_desired distance to stop_** their run with **_an alarm_** from the phone so that user can focus on the run.
-- **Workout Catalog** - Let users **_view recorded workouts_** at one glance.
+- **Login & Register** - Let the user to sign up to the application to allow **_Workout Catalog_** functionality.
+- **Workout Catalog** - Let the user **_view recorded workouts_** at one glance.
+- **View Workout** - Let the user **_individual workouts_** they have done.
+- **Add workout** - Let the user add in previously done workouts **_manually_**.
+- **Add workout** - Let the user record workout based on time to be **_store automatically_**.
 
 ## Technologies Used
 
