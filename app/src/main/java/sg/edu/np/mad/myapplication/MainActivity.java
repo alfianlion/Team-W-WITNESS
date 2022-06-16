@@ -29,11 +29,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         bottomNavigationView.setOnItemSelectedListener(this);
         bottomNavigationView.setSelectedItemId(R.id.catalog);
 
-//        ***** To use the dropdown view in the Activity Start xml *****
-//        Spinner dropdownMenu = findViewById(R.id.exerciseDropdown); //Define object
-//        ArrayAdapter<CharSequence>spinnerAdapter = ArrayAdapter.createFromResource(this, R.array.exerciseTypes, R.layout.activity_start);
-//        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
-//        dropdownMenu.setAdapter(spinnerAdapter);
     }
 
     @Override
