@@ -2,73 +2,30 @@ package sg.edu.np.mad.myapplication;
 
 import java.util.Date;
 
-public class Workout {
-    private String workOutTitle;
-    private int workOutId, numOfSets, numOfReps, timeTaken;
-    private Date dateDone;
+public class Workout extends Exercise{
 
-    //Constructor
-    public Workout() {
-    }
+    int NumOfSets;
+    int NumOfReps;
 
-    public Workout(int workOutId, String workOutTitle, int numOfReps, int numOfSets, int timeTaken, Date dateDone) {
-        this.workOutTitle = workOutTitle;
-        this.numOfSets = numOfSets;
-        this.numOfReps = numOfReps;
-        this.timeTaken = timeTaken;
-        this.workOutId = workOutId;
-        this.dateDone = dateDone;
-    }
-
-    //Getters & Setters
-
-
-    public String getWorkOutTitle() {
-        return workOutTitle;
-    }
-
-    public void setWorkOutTitle(String workOutTitle) {
-        this.workOutTitle = workOutTitle;
-    }
-
-    public int getNumOfSets() {
-        return numOfSets;
-    }
-
-    public void setNumOfSets(int numOfSets) {
-        this.numOfSets = numOfSets;
-    }
-
-    public int getNumOfReps() {
-        return numOfReps;
-    }
-
+    //Reps
     public void setNumOfReps(int numOfReps) {
-        this.numOfReps = numOfReps;
+        NumOfReps = numOfReps;
+    }
+    public int getNumOfReps(){
+        return NumOfReps;
     }
 
-    public int getTimeTaken() {
-        return timeTaken;
+    //Sets
+    public void setNumOfSets(int numOfSets){
+        NumOfSets = numOfSets;
+    }
+    public int getNumOfSets(){
+        return NumOfSets;
     }
 
-    public void setTimeTaken(int timeTaken) {
-        this.timeTaken = timeTaken;
-    }
-
-    public int getWorkOutId() {
-        return workOutId;
-    }
-
-    public void setWorkOutId(int workOutId) {
-        this.workOutId = workOutId;
-    }
-
-    public Date getDateDone() {
-        return dateDone;
-    }
-
-    public void setDateDone(Date dateDone) {
-        this.dateDone = dateDone;
+    public Workout(String title, Integer time, Date date, Integer id, int reps, int sets, String type){
+        super(title,time,date,id,type);
+        NumOfSets = sets;
+        NumOfReps = reps;
     }
 }
-
