@@ -10,7 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WittnessFittness">
         <activity
-            android:name=".selectWorkoutType"
+            android:name=".getWorkout"
+            android:exported="false" />
+        <activity
+            android:name=".getRunning"
+            android:exported="false" />
+        <activity
+            android:name=".selectExercise"
             android:exported="false" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
