@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "975576450161",
+    "firebase_url": "https://wittnessfittness-teamw-default-rtdb.firebaseio.com",
+    "project_id": "wittnessfittness-teamw",
+    "storage_bucket": "wittnessfittness-teamw.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:975576450161:android:afbde8c05d340b425d47d0",
+        "android_client_info": {
+          "package_name": "sg.edu.np.mad.inputapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "975576450161-fiucf0fh5575dlq4fr0kvp2vqnmgi1h1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1KfcaXW4lv1zrIXkKH9SQEDzmVjkC_4M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "975576450161-fiucf0fh5575dlq4fr0kvp2vqnmgi1h1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:975576450161:android:fff26942beb231bd5d47d0",
+        "android_client_info": {
+          "package_name": "sg.edu.np.mad.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "975576450161-fiucf0fh5575dlq4fr0kvp2vqnmgi1h1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1KfcaXW4lv1zrIXkKH9SQEDzmVjkC_4M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "975576450161-fiucf0fh5575dlq4fr0kvp2vqnmgi1h1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

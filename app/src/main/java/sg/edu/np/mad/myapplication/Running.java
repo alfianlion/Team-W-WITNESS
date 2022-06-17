@@ -3,7 +3,9 @@ package sg.edu.np.mad.myapplication;
 import java.util.Date;
 
 public class Running extends Exercise{
+
     double Distance;
+    
     //Distance
     public void setDistance(double dist){
         Distance = dist;

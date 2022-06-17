@@ -4,9 +4,13 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -54,11 +58,25 @@ public class addWorkout extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
-
+    View view;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_workout, container, false);
+        view = inflater.inflate(R.layout.fragment_add_workout, container, false);
+        Button addWorkout = view.findViewById(R.id.addWorkoutButton);
+        EditText workoutTitle = view.findViewById(R.id.workoutTitleInput);
+        EditText numReps = view.findViewById(R.id.numRepsInput);
+        EditText numSets = view.findViewById(R.id.numSetsInput);
+        EditText timeTaken = view.findViewById(R.id.timeTakenInput);
+        EditText date = view.findViewById(R.id.dateInput);
+
+        addWorkout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        return view;
     }
 }

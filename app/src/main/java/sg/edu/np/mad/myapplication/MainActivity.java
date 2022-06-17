@@ -4,20 +4,26 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnItemSelectedListener{
+public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnItemSelectedListener
+
+{
 
     BottomNavigationView bottomNavigationView;
+    private TextView register;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,12 +35,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         bottomNavigationView.setOnItemSelectedListener(this);
         bottomNavigationView.setSelectedItemId(R.id.catalog);
 
-//        ***** To use the dropdown view in the Activity Start xml *****
-//        Spinner dropdownMenu = findViewById(R.id.exerciseDropdown); //Define object
-//        ArrayAdapter<CharSequence>spinnerAdapter = ArrayAdapter.createFromResource(this, R.array.exerciseTypes, R.layout.activity_start);
-//        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
-//        dropdownMenu.setAdapter(spinnerAdapter);
+        register = (TextView) findViewById(R.id.registerIntentBtn);
+        register.setOnClickListener((View.OnClickListener) this);
     }
+
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
