@@ -12,15 +12,15 @@
         android:text="Register"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordReInput" />
+        app:layout_constraintTop_toBottomOf="@+id/emailInput" />
 
     <EditText
-        android:id="@+id/passwordReInput"
+        android:id="@+id/emailInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:ems="10"
-        android:hint="Re-enter Password"
+        android:hint="Email"
         android:imeActionLabel="password"
         android:inputType="textPassword"
         android:minHeight="48dp"
