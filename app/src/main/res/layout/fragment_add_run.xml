@@ -7,16 +7,6 @@
     tools:context=".addRun">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/distanceTravelledTct"
-        android:layout_width="177dp"
-        android:layout_height="57dp"
-        android:layout_marginLeft="35dp"
-        android:layout_marginTop="150dp"
-        android:text="Distance Travelled"
-        android:textAlignment="textStart"
-        android:textSize="24sp" />
-
     <EditText
         android:id="@+id/workoutTitleInput"
         android:layout_width="343dp"
@@ -34,44 +24,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/timeTakenInput"
-        android:layout_width="162dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="220dp"
-        android:layout_marginTop="260dp"
-        android:ems="10"
-        android:hint="00.00"
-        android:inputType="numberDecimal"
-        android:textAlignment="center"
-        android:textSize="24dp" />
-
-    <EditText
-        android:id="@+id/editTextDate"
-        android:layout_width="149dp"
-        android:layout_height="56dp"
-        android:layout_marginLeft="220dp"
-        android:layout_marginTop="350dp"
-        android:ems="10"
-        android:hint="00/00/0000"
-        android:inputType="date"
-        android:textAlignment="center"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/timeTakenInput" />
-
-    <EditText
-        android:id="@+id/distanceTravelledInput"
-        android:layout_width="163dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="220dp"
+    <TextView
+        android:id="@+id/distanceTravelledTct"
+        android:layout_width="177dp"
+        android:layout_height="57dp"
+        android:layout_marginLeft="35dp"
         android:layout_marginTop="150dp"
-        android:ems="10"
-        android:hint="0.00"
-        android:inputType="number"
-        android:textAlignment="center"
+        android:text="Distance Travelled"
+        android:textAlignment="textStart"
         android:textSize="24sp" />
 
     <TextView
@@ -91,6 +51,46 @@
         android:layout_marginTop="360dp"
         android:text="Date"
         android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/distanceTravelledInput"
+        android:layout_width="163dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="220dp"
+        android:layout_marginTop="150dp"
+        android:ems="10"
+        android:hint="0.00"
+        android:inputType="number"
+        android:textAlignment="center"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/timeTakenInput"
+        android:layout_width="162dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="220dp"
+        android:layout_marginTop="260dp"
+        android:ems="10"
+        android:hint="00.00"
+        android:inputType="numberDecimal"
+        android:textAlignment="center"
+        android:textSize="24dp" />
+
+    <EditText
+        android:id="@+id/dateInput"
+        android:layout_width="149dp"
+        android:layout_height="56dp"
+        android:layout_marginLeft="220dp"
+        android:layout_marginTop="350dp"
+        android:ems="10"
+        android:hint="00/00/0000"
+        android:inputType="date"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timeTakenInput" />
 
     <Button
         android:id="@+id/addRunningInputButton"
