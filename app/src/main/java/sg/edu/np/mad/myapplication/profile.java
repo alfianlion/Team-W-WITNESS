@@ -1,12 +1,16 @@
 package sg.edu.np.mad.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -55,10 +59,24 @@ public class profile extends Fragment {
         }
     }
 
+
+    View view;
+    Button register;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false);
+//        return inflater.inflate(R.layout.profile_login, container, false);
+        view = inflater.inflate(R.layout.profile_login, container, false);
+        register = (Button) view.findViewById(R.id.registerIntentBtn);
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent registerPage = new Intent(getActivity(), registerNewUser.class);
+                startActivity(registerPage);
+            }
+        });
+        return view;
     }
 }

@@ -20,7 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.regex.Pattern;
 
-public class registerUser extends AppCompatActivity implements View.OnClickListener{
+public class registerNewUser extends AppCompatActivity implements View.OnClickListener{
 
     private FirebaseAuth mAuth;
     private EditText ETname,ETemail,ETpassword;
@@ -89,21 +89,21 @@ public class registerUser extends AppCompatActivity implements View.OnClickListe
                             FirebaseDatabase.getInstance().getReference("Users")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                     .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if(task.isSuccessful()){
-                                        Toast.makeText(registerUser.this,"User has been successfully registered",
-                                                Toast.LENGTH_LONG).show();
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if(task.isSuccessful()){
+                                                Toast.makeText(registerNewUser.this,"User has been successfully registered",
+                                                        Toast.LENGTH_LONG).show();
 
-                                        //Redirect user to login page/homepage/layout
-                                    }else{
-                                        Toast.makeText(registerUser.this, "Failed to register. Please try again",
-                                                Toast.LENGTH_LONG).show();
-                                    }
-                                }
-                            });
+                                                //Redirect user to login page/homepage/layout
+                                            }else{
+                                                Toast.makeText(registerNewUser.this, "Failed to register. Please try again",
+                                                        Toast.LENGTH_LONG).show();
+                                            }
+                                        }
+                                    });
                         }else{
-                            Toast.makeText(registerUser.this, "Failed to register. Please try again",
+                            Toast.makeText(registerNewUser.this, "Failed to register. Please try again",
                                     Toast.LENGTH_LONG).show();
                         }
                     }

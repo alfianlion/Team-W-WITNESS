@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         bottomNavigationView.setOnItemSelectedListener(this);
         bottomNavigationView.setSelectedItemId(R.id.catalog);
-//
+
 //        register = (TextView) findViewById(R.id.registerIntentBtn);
 //        register.setOnClickListener((View.OnClickListener) this);
     }
