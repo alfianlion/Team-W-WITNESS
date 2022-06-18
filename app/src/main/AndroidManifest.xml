@@ -21,6 +21,9 @@
         <activity
             android:name=".selectExercise"
             android:exported="false" />
+        <activity
+            android:name=".landingPage"
+            android:exported="false" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 

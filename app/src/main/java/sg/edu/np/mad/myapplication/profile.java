@@ -60,10 +60,8 @@ public class profile extends Fragment {
     }
 
     private FirebaseAuth mAuth;
-    EditText username,password;
-    View view;
-    Button register, login;
-    ValueEventListener help;
+    private View view;
+    private Button logout;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -73,75 +71,25 @@ public class profile extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-        username = (EditText) view.findViewById(R.id.usernameInput);
-        password = (EditText) view.findViewById(R.id.passwordInput);
-
-
-        login = (Button) view.findViewById(R.id.loginBtn);
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                userLogin(username.getText().toString(),password.getText().toString());
-            }
-        });
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-//        return inflater.inflate(R.layout.profile_login, container, false);
-        view = inflater.inflate(R.layout.profile_login, container, false);
-        username = (EditText) view.findViewById(R.id.usernameInput);
-        password = (EditText) view.findViewById(R.id.passwordInput);
-
-        login = (Button) view.findViewById(R.id.loginBtn);
-        login.setOnClickListener(new View.OnClickListener() {
+        view = inflater.inflate(R.layout.fragment_profile, container, false);
+        logout = view.findViewById(R.id.logoutBtn);
+        logout.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                userLogin(username.getText().toString(),password.getText().toString());
-            }
-        });
-
-        register = (Button) view.findViewById(R.id.registerIntentBtn);
-        register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent registerPage = new Intent(getActivity(), registerNewUser.class);
-                startActivity(registerPage);
+            public void onClick(View v) {
+                logOut(v);
             }
         });
         return view;
     }
 
-    private void userLogin(String u, String p){
-        String username_string = u;
-        String password_string = p;
-
-
-        if(username_string.isEmpty()){
-            username.setError("Name is required");
-            username.requestFocus();
-            return;
-        }
-
-        if(password_string.isEmpty()){
-            password.setError("Password is required");
-            password.requestFocus();
-            return;
-        }
-
-        mAuth.signInWithEmailAndPassword(username_string, password_string).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    Toast.makeText(getContext(), "Login Successful",Toast.LENGTH_LONG).show();
-                    Log.i("Login","yourmom");
-                    startActivity(new Intent(getActivity(),MainActivity.class));
-                } else {
-                    Toast.makeText(getContext(), "Failed to login! Please check your credentials",Toast.LENGTH_LONG).show();
-                }
-            }
-        });
+    private void logOut(View v){
+        Intent logout = new Intent(v.getContext(),MainActivity.class);
+        startActivity(logout);
     }
 }

@@ -12,7 +12,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class landingPage extends AppCompatActivity implements BottomNavigationView.OnItemSelectedListener
 
 {
-
     BottomNavigationView bottomNavigationView;
     private TextView register;
 
