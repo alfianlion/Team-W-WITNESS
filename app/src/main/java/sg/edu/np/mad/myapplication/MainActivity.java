@@ -18,46 +18,30 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnItemSelectedListener
+public class MainActivity extends AppCompatActivity {
 
-{
-
-    BottomNavigationView bottomNavigationView;
-    private TextView register;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.profile_login);
 
-        bottomNavigationView = findViewById(R.id.bottomNavigationView);
-
-        bottomNavigationView.setOnItemSelectedListener(this);
-        bottomNavigationView.setSelectedItemId(R.id.catalog);
-
-//        register = (TextView) findViewById(R.id.registerIntentBtn);
-//        register.setOnClickListener((View.OnClickListener) this);
-    }
-
-
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-        switch (item.getItemId()) {
-            case R.id.home:
-//                *** Enable / uncomment only for Assignment2 ***
-//                getSupportFragmentManager().beginTransaction().replace(R.id.emptyFrag, new home()).commit();
-//                return true;
-                return false;
-
-            case R.id.catalog:
-                getSupportFragmentManager().beginTransaction().replace(R.id.emptyFrag, new catalogue()).commit();
-                return true;
-
-            case R.id.profile:
-                getSupportFragmentManager().beginTransaction().replace(R.id.emptyFrag, new profile()).commit();
-                return true;
-        }
-        return false;
+        Button registerBtn = findViewById(R.id.registerIntentBtn);
+        registerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent registerPage = new Intent(MainActivity.this, registerNewUser.class);
+                startActivity(registerPage);
+            }
+        });
+        Button loginBtn = findViewById(R.id.loginBtn);
+        loginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent landingPage = new Intent(MainActivity.this, landingPage.class);
+                startActivity(landingPage);
+            }
+        });
     }
 }
+

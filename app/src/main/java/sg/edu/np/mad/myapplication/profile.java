@@ -73,8 +73,8 @@ public class profile extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-        username = (EditText) findViewById(R.id.usernameInput);
-        password = (EditText) findViewById(R.id.passwordInput);
+        username = (EditText) view.findViewById(R.id.usernameInput);
+        password = (EditText) view.findViewById(R.id.passwordInput);
 
 
         login = (Button) view.findViewById(R.id.loginBtn);
