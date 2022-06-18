@@ -29,7 +29,7 @@ public class registerNewUser extends AppCompatActivity implements View.OnClickLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.profile_register);
+        setContentView(R.layout.profile_newregister);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -39,21 +39,23 @@ public class registerNewUser extends AppCompatActivity implements View.OnClickLi
         ETname = (EditText) findViewById(R.id.usernameInput);
         ETpassword = (EditText) findViewById(R.id.passwordInput);
         ETemail = (EditText) findViewById(R.id.emailInput);
+
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.registerSaveBtn:
-                startActivity(new Intent(this,MainActivity.class));
+                registerUser(ETemail.getText().toString(),ETname.getText().toString(),ETpassword.getText().toString());
+//                startActivity(new Intent(this,MainActivity.class));
                 break;
         }
     }
 
-    private void registerUser(){
-        String email = ETemail.getText().toString().trim();
-        String name = ETname.getText().toString().trim();
-        String password = ETpassword.getText().toString().trim();
+    private void registerUser(String e,String n,String p){
+        String email = e;
+        String name = n;
+        String password = p;
 
         if(name.isEmpty()){
             ETname.setError("Name is required");
@@ -86,7 +88,7 @@ public class registerNewUser extends AppCompatActivity implements View.OnClickLi
                         if(task.isSuccessful()){
                             User user = new User(name,password,email);
 
-                            FirebaseDatabase.getInstance().getReference("Users")
+                            FirebaseDatabase.getInstance().getReference("User")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                     .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
@@ -94,6 +96,7 @@ public class registerNewUser extends AppCompatActivity implements View.OnClickLi
                                             if(task.isSuccessful()){
                                                 Toast.makeText(registerNewUser.this,"User has been successfully registered",
                                                         Toast.LENGTH_LONG).show();
+                                                finish();
 
                                                 //Redirect user to login page/homepage/layout
                                             }else{
