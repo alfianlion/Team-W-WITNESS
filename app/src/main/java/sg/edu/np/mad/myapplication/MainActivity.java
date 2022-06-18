@@ -4,7 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -22,15 +24,25 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
+    private FirebaseDatabase database;
     private TextView username, password;
+    private String userId;
+    SharedPreferences session;
+    Context context = MainActivity.this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.profile_login);
 
         mAuth = FirebaseAuth.getInstance();
@@ -39,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
 
         Button registerBtn = findViewById(R.id.registerIntentBtn);
         Button loginBtn = findViewById(R.id.loginBtn);
+
+        session = getSharedPreferences("userPreference",Context.MODE_PRIVATE);
 
         registerBtn.setOnClickListener(this::onClick);
         loginBtn.setOnClickListener(this::onClick);
@@ -78,6 +92,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
+
+                    //Getting and setting Userid from login for catalog, session and other uses
+                    userId = mAuth.getCurrentUser().getUid();
+                    SharedPreferences.Editor storeUserInfo = session.edit();
+                    storeUserInfo.putString("userId",userId);
+                    storeUserInfo.commit();
+
                     Toast.makeText(MainActivity.this, "Login Successful",Toast.LENGTH_LONG).show();
                     startActivity(new Intent(MainActivity.this,landingPage.class));
                 } else {

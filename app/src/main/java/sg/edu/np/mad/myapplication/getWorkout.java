@@ -3,7 +3,9 @@ package sg.edu.np.mad.myapplication;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,7 +28,7 @@ public class getWorkout extends AppCompatActivity {
     Button addWorkoutBtn;
 
     Date date;
-    String type; int id;
+    String type, id;
 
     FirebaseDatabase database;
     DatabaseReference myRef;
@@ -68,8 +70,8 @@ public class getWorkout extends AppCompatActivity {
                 int numSets_final = Integer.parseInt(numSets_string);
                 int timeTaken_final = Integer.parseInt(timeTaken_string);
 
-                //Default user input <needs to be edit-ed to assign real Id and real date-time>
-                id = 1;
+                SharedPreferences session = getSharedPreferences("userPreference", Context.MODE_PRIVATE);
+                id = session.getString("userId","");
                 type = "Workout";
                 date = new Date();
 

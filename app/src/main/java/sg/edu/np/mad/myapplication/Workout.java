@@ -23,7 +23,7 @@ public class Workout extends Exercise{
         return NumOfSets;
     }
 
-    public Workout(String title, Integer time, Date date, Integer id, int reps, int sets, String type){
+    public Workout(String title, Integer time, Date date, String id, int reps, int sets, String type){
         super(title,time,date,id,type);
         NumOfSets = sets;
         NumOfReps = reps;

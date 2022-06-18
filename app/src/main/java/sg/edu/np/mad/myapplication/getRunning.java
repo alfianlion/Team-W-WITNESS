@@ -2,7 +2,9 @@ package sg.edu.np.mad.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -23,7 +25,7 @@ public class getRunning extends AppCompatActivity {
     Button addRunningBtn;
 
     Date date;
-    String type; int id;
+    String type, id;
 
     FirebaseDatabase database;
     DatabaseReference myRef;
@@ -63,7 +65,8 @@ public class getRunning extends AppCompatActivity {
                 double distanceTravelled_double = (double) distanceTravelled_final;
 
                 //Default user input <needs to be edit-ed to assign real Id and real date-time>
-                id = 1;
+                SharedPreferences session = getSharedPreferences("userPreference", Context.MODE_PRIVATE);
+                id = session.getString("userId","");
                 type = "Running";
                 date = new Date();
 
@@ -77,7 +80,7 @@ public class getRunning extends AppCompatActivity {
                 */
 
                 //6. Create and Store running obj in local DB
-                Running runningObj = new Running(woTitle_string, timeTaken_final, date,id, distanceTravelled_double, type);
+                Running runningObj = new Running(woTitle_string, timeTaken_final, date, id, distanceTravelled_double, type);
 
                 //7. Pass in Running Obj into Firebase with Id nesting(as identifier)
                 myRef.child("1115777").setValue(runningObj);

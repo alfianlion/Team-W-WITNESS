@@ -14,7 +14,7 @@ public class Running extends Exercise{
         return Distance;
     }
 
-    public Running(String title,Integer time, Date date, Integer id, double dist,String type){
+    public Running(String title,Integer time, Date date, String id, double dist,String type){
         super(title,time,date,id,type);
         Distance = dist;
     }

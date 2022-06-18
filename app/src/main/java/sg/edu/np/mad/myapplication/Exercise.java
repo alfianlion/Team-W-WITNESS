@@ -8,11 +8,11 @@ abstract public class Exercise {
     String Title;
     Integer TimeTaken;
     Date DateDone;
-    Integer UserID;
+    String UserID;
     String Type;
 
     //Constructor
-    public Exercise(String title,Integer time,Date date,Integer id,String type){
+    public Exercise(String title,Integer time,Date date,String id,String type){
         Title = title;
         TimeTaken = time;
         DateDone = date;
@@ -45,10 +45,10 @@ abstract public class Exercise {
     }
 
     //UserID
-    public void setUserID(Integer id){
+    public void setUserID(String id){
         UserID = id;
     }
-    public Integer getUserID(){
+    public String getUserID(){
         return UserID;
     }
 
