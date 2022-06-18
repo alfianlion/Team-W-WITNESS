@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Adapter;
@@ -16,48 +17,75 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
-public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnItemSelectedListener
+public class MainActivity extends AppCompatActivity {
 
-{
-
-    BottomNavigationView bottomNavigationView;
-    private TextView register;
+    private FirebaseAuth mAuth;
+    private TextView username, password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.profile_login);
 
-        bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        mAuth = FirebaseAuth.getInstance();
+        username = findViewById(R.id.usernameInput);
+        password = findViewById(R.id.passwordInput);
 
-        bottomNavigationView.setOnItemSelectedListener(this);
-        bottomNavigationView.setSelectedItemId(R.id.catalog);
-//
-//        register = (TextView) findViewById(R.id.registerIntentBtn);
-//        register.setOnClickListener((View.OnClickListener) this);
+        Button registerBtn = findViewById(R.id.registerIntentBtn);
+        Button loginBtn = findViewById(R.id.loginBtn);
+
+        registerBtn.setOnClickListener(this::onClick);
+        loginBtn.setOnClickListener(this::onClick);
     }
 
+    public void onClick(View v){
+        switch(v.getId()){
+            case R.id.loginBtn:
+                userLogin(username.getText().toString(),password.getText().toString());
+                break;
 
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-        switch (item.getItemId()) {
-            case R.id.home:
-//                *** Enable / uncomment only for Assignment2 ***
-//                getSupportFragmentManager().beginTransaction().replace(R.id.emptyFrag, new home()).commit();
-//                return true;
-                return false;
-
-            case R.id.catalog:
-                getSupportFragmentManager().beginTransaction().replace(R.id.emptyFrag, new catalogue()).commit();
-                return true;
-
-            case R.id.profile:
-                getSupportFragmentManager().beginTransaction().replace(R.id.emptyFrag, new profile()).commit();
-                return true;
+            case R.id.registerIntentBtn:
+                Intent registerPage = new Intent(MainActivity.this, registerNewUser.class);
+                startActivity(registerPage);
+                break;
         }
-        return false;
     }
+
+    private void userLogin(String u, String p){
+        String username_string = u;
+        String password_string = p;
+
+
+        if(username_string.isEmpty()){
+            username.setError("Name is required");
+            username.requestFocus();
+            return;
+        }
+
+        if(password_string.isEmpty()){
+            password.setError("Password is required");
+            password.requestFocus();
+            return;
+        }
+
+        mAuth.signInWithEmailAndPassword(username_string, password_string).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()){
+                    Toast.makeText(MainActivity.this, "Login Successful",Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(MainActivity.this,landingPage.class));
+                } else {
+                    Toast.makeText(MainActivity.this, "Failed to login! Please check your credentials",Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+    }
+
 }
+
