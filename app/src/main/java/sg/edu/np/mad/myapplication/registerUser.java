@@ -45,15 +45,16 @@ public class registerUser extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.registerSaveBtn:
+                registerUser(ETemail.getText().toString(),ETname.getText().toString(),ETpassword.getText().toString());
                 startActivity(new Intent(this,MainActivity.class));
                 break;
         }
     }
 
-    private void registerUser(){
-        String email = ETemail.getText().toString().trim();
-        String name = ETname.getText().toString().trim();
-        String password = ETpassword.getText().toString().trim();
+    private void registerUser(String e, String n,String p){
+        String email = e;
+        String name = n;
+        String password = p;
 
         if(name.isEmpty()){
             ETname.setError("Name is required");
