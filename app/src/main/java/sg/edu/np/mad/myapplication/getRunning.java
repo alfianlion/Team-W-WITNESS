@@ -47,6 +47,17 @@ public class getRunning extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                // DATABASE
+                //Default user input <needs to be edit-ed to assign real Id and real date-time>
+                SharedPreferences session = getSharedPreferences("userPreference", Context.MODE_PRIVATE);
+                id = session.getString("userId","");
+                type = "Running";
+                date = new Date();
+
+                //4. Initialise and get reference to Running node
+                database = FirebaseDatabase.getInstance();
+                myRef = database.getReference("User/" + id + "/eList");
+
                 // Convert EditText to String
                 String woTitle_string = workoutTitle.getText().toString();
                 String distanceTravelled_string = distanceTravelled.getText().toString();
@@ -57,31 +68,11 @@ public class getRunning extends AppCompatActivity {
                 int timeTaken_final = Integer.parseInt(timeTaken_string);
                 double distanceTravelled_double = (double) distanceTravelled_final;
 
-                // DATABASE
-                //4. Initialise and get reference to Running node
-                database = FirebaseDatabase.getInstance();
-                myRef = database.getReference("Exercises/Runnings/");
-
-                //Default user input <needs to be edit-ed to assign real Id and real date-time>
-                SharedPreferences session = getSharedPreferences("userPreference", Context.MODE_PRIVATE);
-                id = session.getString("userId","");
-                type = "Running";
-                date = new Date();
-
-
-                /* This function > Results in error
-                    //Get date
-                    long millis=System.currentTimeMillis();
-
-                    // creating a new object of the class Date
-                    java.sql.Date date = new java.sql.Date(millis);
-                */
-
                 //6. Create and Store running obj in local DB
-                Running runningObj = new Running(woTitle_string, timeTaken_final, date, id, distanceTravelled_double, type);
+                Exercise runningObj = new Running(woTitle_string, timeTaken_final, date, id, distanceTravelled_double, type);
 
                 //7. Pass in Running Obj into Firebase with Id nesting(as identifier)
-                myRef.child("1115777").setValue(runningObj);
+                myRef.child(id).setValue(runningObj);
                 finish();
             }
         });

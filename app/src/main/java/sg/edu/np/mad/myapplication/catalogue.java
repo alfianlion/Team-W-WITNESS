@@ -75,12 +75,12 @@ public class catalogue extends Fragment{
             }
         });
 
-        Exercise w = new Workout("Your mom", 2, new Date(), "123", 1, 2, "Workout");
-        Exercise w2 = new Workout("Your mom", 2, new Date(), "123", 1, 2, "Workout");
-        Exercise w3 = new Workout("Your mom", 2, new Date(), "123", 1, 2, "Workout");
-        Exercise w4 = new Workout("Your mom", 2, new Date(), "123", 1, 2, "Workout");
-        Exercise w5 = new Workout("Your mom", 2, new Date(), "123", 1, 2, "Workout");
-        Exercise w6 = new Workout("Your mom", 2, new Date(), "123", 1, 2, "Workout");
+        Exercise w = new Workout("Example1", 2, new Date(), "123", 20, 2, "Workout");
+        Exercise w2 = new Workout("Example2", 2, new Date(), "123", 10, 2, "Workout");
+        Exercise w3 = new Workout("Example3", 2, new Date(), "123", 15, 2, "Workout");
+        Exercise w4 = new Workout("Example4", 2, new Date(), "123", 12, 2, "Workout");
+        Exercise w5 = new Workout("Example5", 2, new Date(), "123", 13, 2, "Workout");
+        Exercise w6 = new Workout("Example6", 2, new Date(), "123", 13, 2, "Workout");
         datalist.add(w);
         datalist.add(w2);
         datalist.add(w3);

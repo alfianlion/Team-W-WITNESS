@@ -50,8 +50,13 @@ public class getWorkout extends AppCompatActivity {
             public void onClick(View view) {
 
                 //4. Initialise and get reference to Workout node
+                SharedPreferences session = getSharedPreferences("userPreference", Context.MODE_PRIVATE);
+                id = session.getString("userId","");
+                type = "Workout";
+                date = new Date();
+
                 database = FirebaseDatabase.getInstance();
-                myRef = database.getReference("Exercises/Workouts/");
+                myRef = database.getReference("User/" + id + "/eList");
 
                 //5. Retrieve user inputs
                 // Convert EditText to String
@@ -65,11 +70,6 @@ public class getWorkout extends AppCompatActivity {
                 int numSets_final = Integer.parseInt(numSets_string);
                 int timeTaken_final = Integer.parseInt(timeTaken_string);
 
-                SharedPreferences session = getSharedPreferences("userPreference", Context.MODE_PRIVATE);
-                id = session.getString("userId","");
-                type = "Workout";
-                date = new Date();
-
                 /* This function > Results in error
                     //Get date
                     long millis=System.currentTimeMillis();
@@ -79,10 +79,10 @@ public class getWorkout extends AppCompatActivity {
                 */
 
                 //6. Create and Store workout obj in local DB
-                Workout workoutObj = new Workout(woTitle_string,timeTaken_final,date,id,numReps_final,numSets_final,type);
+                Exercise workoutObj = new Workout(woTitle_string,timeTaken_final,date,id,numReps_final,numSets_final,type);
 
                 //7. Pass in Workout Obj into Firebase with Id nesting(as identifier)
-                myRef.child("7772333").setValue(workoutObj);
+                myRef.child(id).setValue(workoutObj);
                 finish();
             }
         });
