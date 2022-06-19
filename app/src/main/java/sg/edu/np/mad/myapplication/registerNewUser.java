@@ -17,6 +17,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
@@ -27,7 +29,7 @@ public class registerNewUser extends AppCompatActivity implements View.OnClickLi
 
     private FirebaseAuth mAuth;
     private EditText ETname,ETemail,ETpassword;
-    private  ArrayList<Exercise> eList;
+    private ArrayList<Exercise> eList = new ArrayList<>();
     private TextView registerbtn;
 
     @Override
@@ -62,10 +64,6 @@ public class registerNewUser extends AppCompatActivity implements View.OnClickLi
         String name = n;
         String password = p;
         Date now = Calendar.getInstance().getTime();
-        Exercise w1 = new Running("TestRun",1111,now,"Rid",12.34,"Run");
-        Exercise w2 = new Workout("TestWO",1111,now,"WoID",2,3,"Work");
-        eList.add(w1);
-        eList.add(w2);
 
         if(name.isEmpty()){
             ETname.setError("Name is required");
@@ -96,6 +94,13 @@ public class registerNewUser extends AppCompatActivity implements View.OnClickLi
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
+
+                            DatabaseReference userId = FirebaseDatabase.getInstance().getReference("User")
+                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+
+                            Exercise w1 = new Running("Test",1, new Date(), userId.getKey(),1,"Test");
+                            eList.add(w1);
+
                             User user = new User(name,password,email,eList);
 
                             FirebaseDatabase.getInstance().getReference("User")
