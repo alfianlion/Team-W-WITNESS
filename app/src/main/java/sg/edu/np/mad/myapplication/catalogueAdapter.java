@@ -1,61 +1,75 @@
 package sg.edu.np.mad.myapplication;
 
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.os.Parcelable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
-public class catalogueAdapter extends RecyclerView.Adapter<catViewHolder>{
+public class catalogueAdapter extends RecyclerView.Adapter<catalogueAdapter.ViewHolder>{
 
-    catalogue cat;
-    ArrayList<Exercise> data;
+    public ArrayList<Exercise> datalist;
 
-    public catalogueAdapter(ArrayList<Exercise> exerciseList,catalogue cat){
-        data = exerciseList;
-        this.cat = cat;
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+
+        private final TextView title,timetaken,workout;
+
+        public ViewHolder(View view) {
+            super(view);
+
+            title = (TextView) view.findViewById(R.id.viewWorkoutTitle);
+            timetaken = (TextView) view.findViewById(R.id.timeTaken);
+            workout = (TextView) view.findViewById(R.id.workoutType);
+        }
+
+        public TextView getTitle() {
+            return title;
+        }
+        public TextView getTimetaken() {
+            return timetaken;
+        }
+        public TextView getWorkout() {
+            return workout;
+        }
+    }
+
+    public catalogueAdapter(ArrayList<Exercise> data, catalogue catalogue) {
+        this.datalist = data;
+        System.out.println(data.toString());
+    }
+
+    @Override
+    public int getItemViewType(final int position) {
+        return R.layout.workout_rsv;
     }
 
     @NonNull
     @Override
-    public catViewHolder onCreateViewHolder(
-            ViewGroup parent,
-            int viewType
-    ){
-        View item = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.catalogue_block,
-                        parent,
-                        false);
-
-        return new catViewHolder(item);
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View item = LayoutInflater.from(parent.getContext()).inflate(R.layout.workout_rsv, parent, false);
+        return new ViewHolder(item);
     }
 
     @Override
-    public void onBindViewHolder(
-            @NonNull catViewHolder holder,
-            int position
-    ){
-        Exercise e = data.get(position);
+    public void onBindViewHolder(ViewHolder holder, int position){
 
-        holder.timeTaken.setText(e.TimeTaken);
-        holder.title.setText(e.Title);
-        holder.type.setText(e.Type);
+        String title = datalist.get(position).Title;
+        holder.getTitle().setText(title);
+        String t = datalist.get(position).Type;
+        holder.getWorkout().setText(t);
+        String tt = datalist.get(position).TimeTaken.toString();
+        holder.getTimetaken().setText(tt);
 
     }
 
     @Override
     public int getItemCount(){
-        return data.size();
+        return datalist.size();
     }
 
 }

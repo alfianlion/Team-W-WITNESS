@@ -1,6 +1,7 @@
 package sg.edu.np.mad.myapplication;
 
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.Date;
 
 abstract public class Exercise {
@@ -59,4 +60,5 @@ abstract public class Exercise {
     public String getType(){
         return Type;
     }
+
 }

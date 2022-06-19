@@ -10,7 +10,6 @@ import android.widget.TextView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class landingPage extends AppCompatActivity implements BottomNavigationView.OnItemSelectedListener
-
 {
     BottomNavigationView bottomNavigationView;
     private TextView register;
@@ -21,14 +20,12 @@ public class landingPage extends AppCompatActivity implements BottomNavigationVi
         setContentView(R.layout.activity_main);
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
-
         bottomNavigationView.setOnItemSelectedListener(this);
         bottomNavigationView.setSelectedItemId(R.id.catalog);
 
 //        register = (TextView) findViewById(R.id.registerIntentBtn);
 //        register.setOnClickListener((View.OnClickListener) this);
     }
-
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {

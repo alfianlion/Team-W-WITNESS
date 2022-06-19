@@ -18,10 +18,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class getWorkout extends AppCompatActivity {
-
 
     //1. Variables (store etInput & firebase with reference)
     EditText workoutTitle, numReps, numSets, timeTaken;
@@ -74,7 +74,6 @@ public class getWorkout extends AppCompatActivity {
                 id = session.getString("userId","");
                 type = "Workout";
                 date = new Date();
-
 
                 /* This function > Results in error
                     //Get date

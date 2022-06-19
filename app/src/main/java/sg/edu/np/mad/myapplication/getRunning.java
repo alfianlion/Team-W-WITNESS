@@ -16,6 +16,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class getRunning extends AppCompatActivity {
@@ -26,9 +27,11 @@ public class getRunning extends AppCompatActivity {
 
     Date date;
     String type, id;
+    Bundle workoutData;
 
     FirebaseDatabase database;
     DatabaseReference myRef;
+    landingPage landingPage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,11 +52,6 @@ public class getRunning extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                //4. Initialise and get reference to Running node
-                database = FirebaseDatabase.getInstance();
-                myRef = database.getReference("Exercises/Runnings/");
-
-                //5. Retrieve user inputs
                 // Convert EditText to String
                 String woTitle_string = workoutTitle.getText().toString();
                 String distanceTravelled_string = distanceTravelled.getText().toString();
@@ -63,6 +61,11 @@ public class getRunning extends AppCompatActivity {
                 int distanceTravelled_final = Integer.parseInt(distanceTravelled_string);
                 int timeTaken_final = Integer.parseInt(timeTaken_string);
                 double distanceTravelled_double = (double) distanceTravelled_final;
+
+                // DATABASE
+                //4. Initialise and get reference to Running node
+                database = FirebaseDatabase.getInstance();
+                myRef = database.getReference("Exercises/Runnings/");
 
                 //Default user input <needs to be edit-ed to assign real Id and real date-time>
                 SharedPreferences session = getSharedPreferences("userPreference", Context.MODE_PRIVATE);

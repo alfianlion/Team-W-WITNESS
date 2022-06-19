@@ -18,6 +18,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Pattern;
 
 public class registerNewUser extends AppCompatActivity implements View.OnClickListener{
@@ -47,12 +49,11 @@ public class registerNewUser extends AppCompatActivity implements View.OnClickLi
         switch (v.getId()){
             case R.id.registerSaveBtn:
                 registerUser(ETemail.getText().toString(),ETname.getText().toString(),ETpassword.getText().toString());
-//                startActivity(new Intent(this,MainActivity.class));
                 break;
         }
     }
 
-    private void registerUser(String e,String n,String p){
+    private void registerUser(String e, String n, String p){
         String email = e;
         String name = n;
         String password = p;

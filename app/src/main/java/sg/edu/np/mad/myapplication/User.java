@@ -1,5 +1,7 @@
 package sg.edu.np.mad.myapplication;
 
+import java.util.ArrayList;
+
 public class User {
     public String name,password,email;
 
