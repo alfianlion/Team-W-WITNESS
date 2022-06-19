@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">wittnessFittness</string>
+    <string name="app_name">WittnessFittness</string>
     <string-array name="exerciseTypes">
         <item>Running</item>
         <item>Jogging</item>
