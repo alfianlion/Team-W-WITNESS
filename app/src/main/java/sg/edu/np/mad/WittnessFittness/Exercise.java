@@ -1,8 +1,4 @@
-package sg.edu.np.mad.myapplication;
-
-import java.sql.Time;
-import java.util.ArrayList;
-import java.util.Date;
+package sg.edu.np.mad.WittnessFittness;
 
 abstract public class Exercise {
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="sg.edu.np.mad.myapplication">
+    package="sg.edu.np.mad.WittnessFittness">
 
     <application
         android:allowBackup="true"
@@ -10,19 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WittnessFittness">
         <activity
-            android:name=".registerNewUser"
+            android:name="sg.edu.np.mad.WittnessFittness.registerNewUser"
             android:exported="false" />
         <activity
-            android:name=".getWorkout"
+            android:name="sg.edu.np.mad.WittnessFittness.getWorkout"
             android:exported="false" />
         <activity
-            android:name=".getRunning"
+            android:name="sg.edu.np.mad.WittnessFittness.getRunning"
             android:exported="false" />
         <activity
-            android:name=".selectExercise"
+            android:name="sg.edu.np.mad.WittnessFittness.selectExercise"
             android:exported="false" />
         <activity
-            android:name=".landingPage"
+            android:name="sg.edu.np.mad.WittnessFittness.landingPage"
             android:exported="false" />
 
         <!--
@@ -41,7 +41,7 @@
             android:value="YOUR_API_KEY" />
 
         <activity
-            android:name=".MainActivity"
+            android:name="sg.edu.np.mad.WittnessFittness.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

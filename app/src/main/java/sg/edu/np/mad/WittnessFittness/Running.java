@@ -1,7 +1,4 @@
-package sg.edu.np.mad.myapplication;
-
-import java.util.ArrayList;
-import java.util.Date;
+package sg.edu.np.mad.WittnessFittness;
 
 public class Running extends Exercise{
 

@@ -1,4 +1,4 @@
-package sg.edu.np.mad.myapplication;
+package sg.edu.np.mad.WittnessFittness;
 
 import androidx.appcompat.app.AppCompatActivity;
 

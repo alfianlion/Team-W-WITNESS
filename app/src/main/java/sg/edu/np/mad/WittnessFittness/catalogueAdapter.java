@@ -1,4 +1,4 @@
-package sg.edu.np.mad.myapplication;
+package sg.edu.np.mad.WittnessFittness;
 
 import android.view.LayoutInflater;
 import android.view.View;

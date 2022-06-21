@@ -1,7 +1,6 @@
-package sg.edu.np.mad.myapplication;
+package sg.edu.np.mad.WittnessFittness;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class User {
     public String name,password,email;
