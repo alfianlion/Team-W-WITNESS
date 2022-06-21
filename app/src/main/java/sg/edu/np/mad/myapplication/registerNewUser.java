@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Calendar;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,14 +17,19 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.regex.Pattern;
 
 public class registerNewUser extends AppCompatActivity implements View.OnClickListener{
 
     private FirebaseAuth mAuth;
     private EditText ETname,ETemail,ETpassword;
+    private ArrayList<Exercise> eList = new ArrayList<>();
     private TextView registerbtn;
 
     @Override
@@ -39,23 +45,25 @@ public class registerNewUser extends AppCompatActivity implements View.OnClickLi
         ETname = (EditText) findViewById(R.id.usernameInput);
         ETpassword = (EditText) findViewById(R.id.passwordInput);
         ETemail = (EditText) findViewById(R.id.emailInput);
-
+        eList = new ArrayList<>();
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.registerSaveBtn:
-                registerUser(ETemail.getText().toString(),ETname.getText().toString(),ETpassword.getText().toString());
+                registerUser(ETemail.getText().toString(),ETname.getText().toString(),
+                        ETpassword.getText().toString(), eList);
 //                startActivity(new Intent(this,MainActivity.class));
                 break;
         }
     }
 
-    private void registerUser(String e,String n,String p){
+    private void registerUser(String e,String n,String p, ArrayList<Exercise> eList){
         String email = e;
         String name = n;
         String password = p;
+        Date now = Calendar.getInstance().getTime();
 
         if(name.isEmpty()){
             ETname.setError("Name is required");
@@ -86,7 +94,14 @@ public class registerNewUser extends AppCompatActivity implements View.OnClickLi
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            User user = new User(name,password,email);
+
+                            DatabaseReference userId = FirebaseDatabase.getInstance().getReference("User")
+                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+
+                            Exercise w1 = new Running("Test",1, new Date(), userId.getKey(),1,"Test");
+                            eList.add(w1);
+
+                            User user = new User(name,password,email,eList);
 
                             FirebaseDatabase.getInstance().getReference("User")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())

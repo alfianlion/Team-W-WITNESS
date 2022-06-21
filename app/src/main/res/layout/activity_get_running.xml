@@ -12,12 +12,12 @@
 
 
     <EditText
-        android:id="@+id/workoutTitleInput"
+        android:id="@+id/titleInput"
         android:layout_width="343dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="156dp"
         android:ems="10"
-        android:hint="Workout Title: "
+        android:hint="Running Title: "
         android:inputType="textPersonName"
         android:textAlignment="textStart"
         android:textAllCaps="true"
@@ -38,7 +38,7 @@
         android:textAlignment="center"
         android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@+id/distanceTravelledTct"
-        app:layout_constraintTop_toBottomOf="@+id/workoutTitleInput" />
+        app:layout_constraintTop_toBottomOf="@+id/titleInput" />
 
     <TextView
         android:id="@+id/timeTakenTxt"
@@ -61,7 +61,7 @@
         android:textAlignment="textStart"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/workoutTitleInput" />
+        app:layout_constraintTop_toBottomOf="@+id/titleInput" />
 
     <Button
         android:id="@+id/addRunningInputButton"
@@ -78,11 +78,11 @@
         android:id="@+id/backButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="Back"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/addRunningInputButton" />
 
     <EditText
         android:id="@+id/timeTakenInput"

@@ -43,6 +43,7 @@
         android:layout_marginStart="188dp"
         android:layout_marginTop="40dp"
         android:contentDescription="deleteButton"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/viewWorkoutTitle"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />

@@ -11,7 +11,7 @@
     tools:context=".getWorkout">
 
     <EditText
-        android:id="@+id/workoutTitleInput"
+        android:id="@+id/titleInput"
         android:layout_width="343dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="164dp"
@@ -29,7 +29,7 @@
         android:id="@+id/addWorkoutInputButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="60dp"
         android:text="Add"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.52"
@@ -56,7 +56,7 @@
         android:text="Number of Repetitions"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/workoutTitleInput" />
+        app:layout_constraintTop_toBottomOf="@+id/titleInput" />
 
     <EditText
         android:id="@+id/numSetsInput"
@@ -95,17 +95,18 @@
         android:textAlignment="center"
         android:textSize="24dp"
         app:layout_constraintStart_toEndOf="@+id/numRepsTxt"
-        app:layout_constraintTop_toBottomOf="@+id/workoutTitleInput" />
+        app:layout_constraintTop_toBottomOf="@+id/titleInput" />
 
     <Button
         android:id="@+id/backButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:text="Back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.52"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/addWorkoutInputButton" />
 
     <EditText
         android:id="@+id/timeTakenInput"

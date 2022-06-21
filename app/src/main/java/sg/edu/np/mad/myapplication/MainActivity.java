@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
                     storeUserInfo.putString("userId",userId);
                     storeUserInfo.commit();
 
-                    Toast.makeText(MainActivity.this, "Login Successful",Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "Login Successful",Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(MainActivity.this,landingPage.class));
                 } else {
                     Toast.makeText(MainActivity.this, "Failed to login! Please check your credentials",Toast.LENGTH_LONG).show();
