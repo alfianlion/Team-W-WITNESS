@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -34,11 +38,11 @@
 
     <TextView
         android:id="@+id/timeTakenTxt"
-        android:layout_width="wrap_content"
+        android:layout_width="179dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="44dp"
-        android:text="Time Taken"
+        android:layout_marginTop="24dp"
+        android:text="Time Taken(min)"
         android:textSize="24dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/numSetsTxt" />
@@ -58,8 +62,8 @@
         android:id="@+id/numSetsInput"
         android:layout_width="167dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="24dp"
         android:ems="10"
         android:hint="0"
         android:inputType="number"
@@ -73,7 +77,7 @@
         android:layout_width="154dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="24dp"
         android:text="Number of Sets"
         android:textSize="24dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -107,8 +111,7 @@
         android:id="@+id/timeTakenInput"
         android:layout_width="173dp"
         android:layout_height="52dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="44dp"
         android:ems="10"
         android:hint="0"
         android:inputType="number"
@@ -118,3 +121,4 @@
         app:layout_constraintTop_toBottomOf="@+id/numSetsInput" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

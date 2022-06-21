@@ -60,15 +60,17 @@ public class getRunning extends AppCompatActivity {
                 String timeTaken_string = timeTaken.getText().toString();
 
                 // Convert to dataType for Firebase Database
-                int distanceTravelled_final = Integer.parseInt(distanceTravelled_string);
                 int timeTaken_final = Integer.parseInt(timeTaken_string);
-                double distanceTravelled_double = (double) distanceTravelled_final;
+                double distanceTravelled_double = Double.parseDouble(distanceTravelled_string);
 
                 //Default user input <needs to be edit-ed to assign real Id and real date-time>
                 SharedPreferences session = getSharedPreferences("userPreference", Context.MODE_PRIVATE);
                 id = session.getString("userId","");
                 type = "Running";
+
                 date = new Date();
+                //SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy");
+                //String date_string = sdf.format(date);
 
 
                 /* This function > Results in error
@@ -84,6 +86,9 @@ public class getRunning extends AppCompatActivity {
 
                 //7. Pass in Running Obj into Firebase with Id nesting(as identifier)
                 myRef.child("1115777").setValue(runningObj);
+
+                //Toast message to indicate successful recording
+                Toast.makeText(getRunning.this, "RUN RECORDED", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });

@@ -89,6 +89,9 @@ public class getWorkout extends AppCompatActivity {
 
                 //7. Pass in Workout Obj into Firebase with Id nesting(as identifier)
                 myRef.child("7772333").setValue(workoutObj);
+
+                //Toast message to indicate successful recording
+                Toast.makeText(getWorkout.this, "WORKOUT RECORDED", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });

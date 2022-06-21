@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -38,11 +42,11 @@
 
     <TextView
         android:id="@+id/timeTakenTxt"
-        android:layout_width="wrap_content"
+        android:layout_width="179dp"
         android:layout_height="60dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="44dp"
-        android:text="Time Taken"
+        android:text="Time Taken(min)"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/distanceTravelledTct" />
@@ -53,7 +57,7 @@
         android:layout_height="57dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="40dp"
-        android:text="Distance Travelled"
+        android:text="Distance Travelled(m)"
         android:textAlignment="textStart"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -82,10 +86,10 @@
 
     <EditText
         android:id="@+id/timeTakenInput"
-        android:layout_width="174dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="36dp"
+        android:layout_width="158dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="48dp"
         android:ems="10"
         android:hint="0"
         android:inputType="number"
@@ -95,3 +99,4 @@
         app:layout_constraintTop_toBottomOf="@+id/distanceTravelledInput" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

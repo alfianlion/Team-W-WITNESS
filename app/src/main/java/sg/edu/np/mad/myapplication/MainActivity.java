@@ -1,5 +1,7 @@
 package sg.edu.np.mad.myapplication;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
@@ -28,7 +30,13 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,10 +47,21 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences session;
     Context context = MainActivity.this;
 
+    //1. List to store all Exercise instances(objects) from FB
+    ArrayList<Exercise> exercisesObjList = new ArrayList<Exercise>();
+    //ArrayList<Workout> woList = new ArrayList<Workout>();
+    //ArrayList<Running> runList = new ArrayList<Running>();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //TEST
+        ReadDBRunnings();
+        for (Exercise e: exercisesObjList){
+            Log.w(exercisesObjList.toString(), exercisesObjList.toString());
+        }
         setContentView(R.layout.profile_login);
 
         mAuth = FirebaseAuth.getInstance();
@@ -107,6 +126,57 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+
+    //** Read FireBase Data to Populate catalogue
+    public void ReadDBRunnings(){
+        //1. Get root node of Firebase [***This needs to be determined as global variable***]
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+        //2. Retrieve respective user ID (to locate the item in the node)
+        String defaultUserIDRun  = "1115777";
+        String defaultUserIDWO = "7772333";
+
+        //3. Reference to the User's Exercises
+        DatabaseReference myRefWO = database.getReference("Exercises/Workouts/"); //***userID needs to be retrieved via intent
+        DatabaseReference myRefRUN = database.getReference("Exercises/Runnings/" + defaultUserIDRun);
+        DatabaseReference myRef = database.getReference("Exercises/");
+
+        //4. Check If userID exists in Db (done in authentication)
+        Query checkUserWO = myRefWO.orderByChild("userID").equalTo(defaultUserIDWO); //checks if user exists in DB
+        //userID matches the key(userID) in the Firebase DB //the query will query all instances the matches the given userID
+
+
+        //5. Read from the database
+        checkUserWO.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // To ensure it does not store the previous iteration data
+                exercisesObjList.clear();
+
+                //Determines if reference(myRef) has been made successfully, so in order to read the obj the snapShot should be able to access Exercises/Workouts/
+                if(dataSnapshot.exists()){
+
+                    //***FOR LOOP***
+                    for (DataSnapshot snapshot: dataSnapshot.getChildren()){  //for all snapshot, iterate through all snapshots
+                        Workout workoutDB = snapshot.getValue(Workout.class);
+
+                        Log.e("Count: ", ""+ snapshot.getChildrenCount()+ "(number of children)");
+
+                        exercisesObjList.add(workoutDB);
+                    }
+
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Post failed, log a message
+                Log.w(TAG, "loadPost:onCancelled failed", databaseError.toException());
+            }
+        });
+    }
+
 
 }
 

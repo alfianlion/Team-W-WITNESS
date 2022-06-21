@@ -11,7 +11,11 @@ abstract public class Exercise {
     String UserID;
     String Type;
 
+
     //Constructor
+    public Exercise(){
+    }
+
     public Exercise(String title,Integer time,Date date,String id,String type){
         Title = title;
         TimeTaken = time;
@@ -58,5 +62,18 @@ abstract public class Exercise {
     }
     public String getType(){
         return Type;
+    }
+
+    //ToString (for testing)
+
+    @Override
+    public String toString() {
+        return "Exercise{" +
+                "Title='" + Title + '\'' +
+                ", TimeTaken=" + TimeTaken +
+                ", DateDone=" + DateDone +
+                ", UserID='" + UserID + '\'' +
+                ", Type='" + Type + '\'' +
+                '}';
     }
 }
