@@ -23,13 +23,8 @@
             android:exported="false" />
         <activity
             android:name=".landingPage"
-            android:exported="true" >
-                <intent-filter>
-                    <action android:name="android.intent.action.MAIN" />
-                    <category android:name="android.intent.category.LAUNCHER" />
-                </intent-filter>
-            <!--!!!DON'T PUSH THIS IN, IT IS ONLY FOR APP-TESTING PURPOSES-->
-        </activity>
+            android:exported="false" />
+
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 
@@ -47,7 +42,12 @@
 
         <activity
             android:name=".MainActivity"
-            android:exported="false"/>
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
     </application>
 

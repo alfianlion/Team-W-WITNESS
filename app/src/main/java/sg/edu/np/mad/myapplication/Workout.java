@@ -26,11 +26,23 @@ public class Workout extends Exercise{
     }
 
     //Constructor
-    public Workout(){
-    }
+
     public Workout(String title, Integer time, Date date, String id, int reps, int sets, String type){
         super(title,time,date,id,type);
         NumOfSets = sets;
         NumOfReps = reps;
+    }
+
+    @Override
+    public String toString() {
+        return "Workout{" +
+                "Title='" + Title + '\'' +
+                ", TimeTaken=" + TimeTaken +
+                ", DateDone=" + DateDone +
+                ", UserID='" + UserID + '\'' +
+                ", Type='" + Type + '\'' +
+                ", NumOfSets=" + NumOfSets +
+                ", NumOfReps=" + NumOfReps +
+                '}';
     }
 }

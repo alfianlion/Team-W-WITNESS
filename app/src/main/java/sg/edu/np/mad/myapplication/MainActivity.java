@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         //TEST
         ReadDBRunnings();
         for (Exercise e: exercisesObjList){
-            Log.w(exercisesObjList.toString(), exercisesObjList.toString());
+            System.out.println(e.toString());
         }
         setContentView(R.layout.profile_login);
 
