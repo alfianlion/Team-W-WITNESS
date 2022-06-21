@@ -8,11 +8,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Random;
 
 public class getRunning extends AppCompatActivity {
 
@@ -23,6 +26,9 @@ public class getRunning extends AppCompatActivity {
     Date date;
     String type, id;
     Bundle workoutData;
+    Random random;
+    String nameNum;
+    int name;
 
     FirebaseDatabase database;
     DatabaseReference myRef;
@@ -52,7 +58,15 @@ public class getRunning extends AppCompatActivity {
                 SharedPreferences session = getSharedPreferences("userPreference", Context.MODE_PRIVATE);
                 id = session.getString("userId","");
                 type = "Running";
+
                 date = new Date();
+                SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy");
+                String date_string = sdf.format(date);
+
+                //Creating obj name
+                random = new Random();
+                name = random.nextInt((1000000000+1000000000) - 1000000000);
+                nameNum = Integer.toString(name); //as name is a string in the Obj we must convert it
 
                 //4. Initialise and get reference to Running node
                 database = FirebaseDatabase.getInstance();
@@ -69,10 +83,13 @@ public class getRunning extends AppCompatActivity {
                 double distanceTravelled_double = (double) distanceTravelled_final;
 
                 //6. Create and Store running obj in local DB
-                Exercise runningObj = new Running(woTitle_string, timeTaken_final, date, id, distanceTravelled_double, type);
+                Running runningObj = new Running(woTitle_string, timeTaken_final, date_string, id, distanceTravelled_double, type);
+
+                //Toast message to indicate successful recording
+                Toast.makeText(getRunning.this, "RUN RECORDED", Toast.LENGTH_SHORT).show();
 
                 //7. Pass in Running Obj into Firebase with Id nesting(as identifier)
-                myRef.child(id).setValue(runningObj);
+                myRef.child(nameNum).setValue(runningObj);
                 finish();
             }
         });

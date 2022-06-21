@@ -8,12 +8,14 @@ abstract public class Exercise {
 
     String Title;
     Integer TimeTaken;
-    Date DateDone;
+    String DateDone;
     String UserID;
     String Type;
 
+    public Exercise(){}
+
     //Constructor
-    public Exercise(String title,Integer time,Date date,String id,String type){
+    public Exercise(String title,Integer time,String date,String id,String type){
         Title = title;
         TimeTaken = time;
         DateDone = date;
@@ -38,10 +40,10 @@ abstract public class Exercise {
     }
 
     //DateDone
-    public void setDateDone(Date date){
+    public void setDateDone(String date){
         DateDone = date;
     }
-    public Date getDateDone(){
+    public String getDateDone(){
         return DateDone;
     }
 

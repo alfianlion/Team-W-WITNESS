@@ -3,6 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/alfia/StudioProjects/Team-W-WITNESS/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.189" />
+        <entry key="..\:/Users/alfia/StudioProjects/Team-W-WITNESS/app/src/main/res/drawable/ic_catalog_background.xml" value="0.189" />
+        <entry key="..\:/Users/alfia/StudioProjects/Team-W-WITNESS/app/src/main/res/drawable/ic_catalog_foreground.xml" value="0.189" />
+        <entry key="..\:/Users/alfia/StudioProjects/Team-W-WITNESS/app/src/main/res/drawable/ic_home_background.xml" value="0.189" />
+        <entry key="..\:/Users/alfia/StudioProjects/Team-W-WITNESS/app/src/main/res/drawable/ic_home_foreground.xml" value="0.189" />
+        <entry key="..\:/Users/alfia/StudioProjects/Team-W-WITNESS/app/src/main/res/drawable/ic_launcher_background.xml" value="0.189" />
+        <entry key="..\:/Users/alfia/StudioProjects/Team-W-WITNESS/app/src/main/res/drawable/ic_person_foreground.xml" value="0.189" />
         <entry key="..\:/Users/alfia/StudioProjects/Team-W-WITNESS/app/src/main/res/layout/activity_add.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/alfia/StudioProjects/Team-W-WITNESS/app/src/main/res/layout/activity_get_running.xml" value="0.19479166666666667" />
         <entry key="..\:/Users/alfia/StudioProjects/Team-W-WITNESS/app/src/main/res/layout/activity_get_workout.xml" value="0.33" />
@@ -14,7 +21,7 @@
         <entry key="..\:/Users/alfia/StudioProjects/Team-W-WITNESS/app/src/main/res/layout/catalogue_page.xml" value="0.18802083333333333" />
         <entry key="..\:/Users/alfia/StudioProjects/Team-W-WITNESS/app/src/main/res/layout/fragment_add_run.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/alfia/StudioProjects/Team-W-WITNESS/app/src/main/res/layout/fragment_add_workout.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/alfia/StudioProjects/Team-W-WITNESS/app/src/main/res/layout/fragment_catalogue.xml" value="0.5" />
+        <entry key="..\:/Users/alfia/StudioProjects/Team-W-WITNESS/app/src/main/res/layout/fragment_catalogue.xml" value="0.47342995169082125" />
         <entry key="..\:/Users/alfia/StudioProjects/Team-W-WITNESS/app/src/main/res/layout/fragment_home.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/alfia/StudioProjects/Team-W-WITNESS/app/src/main/res/layout/fragment_profile.xml" value="0.33" />
         <entry key="..\:/Users/alfia/StudioProjects/Team-W-WITNESS/app/src/main/res/layout/profile_login.xml" value="0.19583333333333333" />
@@ -28,8 +35,6 @@
         <entry key="..\:/Users/huixi/AndroidStudioProjects/wittnessFittness/app/src/main/res/layout/catalogue_page.xml" value="0.35778985507246375" />
         <entry key="..\:/Users/huixi/AndroidStudioProjects/wittnessFittness/app/src/main/res/layout/view_workout.xml" value="0.1" />
         <entry key="..\:/Users/huixi/AndroidStudioProjects/wittnessFittness/app/src/main/res/layout/workout_rsv.xml" value="0.35778985507246375" />
-        <entry key="..\:/Users/joshu/Desktop/Andriod/TeamW-FINAL/app/src/main/res/layout/activity_get_running.xml" value="0.3333333333333333" />
-        <entry key="..\:/Users/joshu/Desktop/Andriod/TeamW-FINAL/app/src/main/res/layout/activity_get_workout.xml" value="0.14666666666666667" />
       </map>
     </option>
   </component>

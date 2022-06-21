@@ -9,16 +9,17 @@ public class User {
 
     public User(){}
 
-    public User(String name,String password,String email){
+    public User(String name,String password,String email, ArrayList<Exercise> list){
         this.name = name;
         this.password = password;
         this.email = email;
+        this.eList = list;
     }
 
-    public User(String name, String password, String email, ArrayList<Exercise> eList) {
-        this.name = name;
-        this.password = password;
-        this.email = email;
-        this.eList = eList;
-    }
+//    public User(String name, String password, String email) {
+//        this.name = name;
+//        this.password = password;
+//        this.email = email;
+//        this.eList = eList;
+//    }
 }

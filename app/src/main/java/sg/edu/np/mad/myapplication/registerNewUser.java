@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -63,7 +64,10 @@ public class registerNewUser extends AppCompatActivity implements View.OnClickLi
         String email = e;
         String name = n;
         String password = p;
-        Date now = Calendar.getInstance().getTime();
+        Date date = new Date();
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy");
+        String date_string = sdf.format(date);
 
         if(name.isEmpty()){
             ETname.setError("Name is required");
@@ -98,7 +102,7 @@ public class registerNewUser extends AppCompatActivity implements View.OnClickLi
                             DatabaseReference userId = FirebaseDatabase.getInstance().getReference("User")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid());
 
-                            Exercise w1 = new Running("Test",1, new Date(), userId.getKey(),1,"Test");
+                            Exercise w1 = new Running("Test",1, date_string, userId.getKey(),1,"Test");
                             eList.add(w1);
 
                             User user = new User(name,password,email,eList);

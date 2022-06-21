@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseDatabase database;
     private TextView username, password;
-    private String userId;
+    public String userId;
     SharedPreferences session;
     Context context = MainActivity.this;
 
@@ -58,10 +58,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         //TEST
-        ReadDBRunnings();
-        for (Exercise e: exercisesObjList){
-            System.out.println(e.toString());
-        }
+//        ReadDBRunnings();
         setContentView(R.layout.profile_login);
 
         mAuth = FirebaseAuth.getInstance();
@@ -128,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    /*
     //** Read FireBase Data to Populate catalogue
     public void ReadDBRunnings(){
         //1. Get root node of Firebase [***This needs to be determined as global variable***]
@@ -176,6 +174,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+    */
+
 
 
 }

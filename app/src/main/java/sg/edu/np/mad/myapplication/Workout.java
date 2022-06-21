@@ -27,7 +27,9 @@ public class Workout extends Exercise{
 
     //Constructor
 
-    public Workout(String title, Integer time, Date date, String id, int reps, int sets, String type){
+    public Workout(){super();}
+
+    public Workout(String title, Integer time, String date, String id, int reps, int sets, String type){
         super(title,time,date,id,type);
         NumOfSets = sets;
         NumOfReps = reps;
