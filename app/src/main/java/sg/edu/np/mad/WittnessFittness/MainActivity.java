@@ -16,6 +16,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
@@ -24,9 +26,11 @@ public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private FirebaseDatabase database;
+    private DataSnapshot ds;
     private TextView username, password;
     public String userId;
     SharedPreferences session;
+    private DatabaseReference myRef;
     Context context = MainActivity.this;
 
     //1. List to store all Exercise instances(objects) from FB

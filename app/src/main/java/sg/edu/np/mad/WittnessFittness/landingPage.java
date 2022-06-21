@@ -9,10 +9,14 @@ import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class landingPage extends AppCompatActivity implements BottomNavigationView.OnItemSelectedListener
 {
     BottomNavigationView bottomNavigationView;
-    private TextView register;
+    private TextView displayDate;
+    private Date date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

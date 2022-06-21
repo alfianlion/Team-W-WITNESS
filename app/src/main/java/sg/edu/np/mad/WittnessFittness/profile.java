@@ -1,16 +1,31 @@
 package sg.edu.np.mad.WittnessFittness;
 
+import static android.content.ContentValues.TAG;
+
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -51,17 +66,15 @@ public class profile extends Fragment {
     }
 
     private FirebaseAuth mAuth;
+    private String name;
+    private String dbName;
     private View view;
     private Button logout;
+    private Date date;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-
     }
 
     @Override
@@ -69,6 +82,21 @@ public class profile extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_profile, container, false);
+
+        SharedPreferences session = getActivity().getSharedPreferences("userPreference", Context.MODE_PRIVATE);
+
+        //2. Retrieve respective user ID (to locate the item in the node)
+        String name = session.getString("name","");
+
+        TextView username = view.findViewById(R.id.username);
+        username.setText(name);
+
+        TextView dateDisplay = view.findViewById(R.id.currentDate);
+        date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy");
+        String date_string = sdf.format(date);
+        dateDisplay.setText(date_string);
+
         logout = view.findViewById(R.id.logoutBtn);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override

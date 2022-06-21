@@ -17,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -24,6 +25,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -40,7 +42,7 @@ public class catalogue extends Fragment{
     private String userId;
     private DatabaseReference myRef;
     private catalogue cat;
-    private Date currentDate;
+    private Date date;
     private ArrayList<Exercise> datalist = new ArrayList<>();
     MainActivity mainActivity;
     SharedPreferences session;
@@ -58,13 +60,20 @@ public class catalogue extends Fragment{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_catalogue, container, false);
+
+        date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy");
+        String date_string = sdf.format(date);
+
+        TextView dateDisplay = view.findViewById(R.id.dateDisplay);
+        dateDisplay.setText(date_string);
+
         Button addActivity = view.findViewById(R.id.addActivity);
         addActivity.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,19 +83,6 @@ public class catalogue extends Fragment{
                 ((Activity) getActivity()).overridePendingTransition(0,0);
             }
         });
-/*
-        Exercise w = new Workout("Example1", 2, new Date(), "123", 20, 2, "Workout");
-        Exercise w2 = new Workout("Example2", 2, new Date(), "123", 10, 2, "Workout");
-        Exercise w3 = new Workout("Example3", 2, new Date(), "123", 15, 2, "Workout");
-        Exercise w4 = new Workout("Example4", 2, new Date(), "123", 12, 2, "Workout");
-        Exercise w5 = new Workout("Example5", 2, new Date(), "123", 13, 2, "Workout");
-        Exercise w6 = new Workout("Example6", 2, new Date(), "123", 13, 2, "Workout");
-        datalist.add(w);
-        datalist.add(w2);
-        datalist.add(w3);
-        datalist.add(w4);
-        datalist.add(w5);
-        datalist.add(w6);*/
 
         ReadDBRunnings();
 
@@ -114,6 +110,7 @@ public class catalogue extends Fragment{
 
         //3. Reference to the User's Exercises
         DatabaseReference myRef = database.getReference("User/" + id + "/eList/");
+        DatabaseReference myRef2 = database.getReference("User/" + id + "/");
 
         //4. Check If userID exists in Db (done in authentication)
 //        Query checkUserWO = myRef.child("1"); //checks if user exists in DB
@@ -132,6 +129,7 @@ public class catalogue extends Fragment{
 
                     //**FOR LOOP**
                     for (DataSnapshot ds : dataSnapshot.getChildren()){  //for all snapshot, iterate through all snapshots
+
                         String e = ds.child("type").getValue(String.class);
                         System.out.println("Object: " + e);
 
@@ -146,6 +144,28 @@ public class catalogue extends Fragment{
                         }
                     }
 
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Post failed, log a message
+                Log.w(TAG, "loadPost:onCancelled failed", databaseError.toException());
+            }
+        });
+
+        myRef2.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // To ensure it does not store the previous iteration data
+
+                //Determines if reference(myRef) has been made successfully, so in order to read the obj the snapShot should be able to access Exercises/Workouts/
+                if(dataSnapshot.exists()){
+                    String e = dataSnapshot.child("name").getValue(String.class);
+                    SharedPreferences.Editor storeUserInfo = session.edit();
+                    storeUserInfo.putString("name",e);
+                    storeUserInfo.commit();
                 }
 
             }
