@@ -21,16 +21,13 @@ import java.util.Random;
 
 public class getWorkout extends AppCompatActivity {
 
-    //1. Variables (store etInput & firebase with reference)
     EditText workoutTitle, numReps, numSets, timeTaken;
     Button addWorkoutBtn;
-
     Date date;
     String type, id;
     Random random;
     String nameNum;
-    int name;
-
+    Integer name;
     FirebaseDatabase database;
     DatabaseReference myRef;
 

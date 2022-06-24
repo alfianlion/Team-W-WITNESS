@@ -63,7 +63,7 @@ public class catalogueAdapter extends RecyclerView.Adapter<catalogueAdapter.View
         String t = datalist.get(position).Type;
         holder.getWorkout().setText(t);
         String tt = datalist.get(position).TimeTaken.toString();
-        holder.getTimetaken().setText(tt);
+        holder.getTimetaken().setText(tt + " mins");
 
     }
 

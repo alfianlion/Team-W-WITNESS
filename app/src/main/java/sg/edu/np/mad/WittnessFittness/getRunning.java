@@ -21,20 +21,15 @@ import sg.edu.np.mad.WittnessFittness.R;
 
 public class getRunning extends AppCompatActivity {
 
-    //1. Variables (store etInput & firebase with reference)
     EditText workoutTitle, distanceTravelled, timeTaken;
     Button addRunningBtn;
-
     Date date;
     String type, id;
-    Bundle workoutData;
     Random random;
     String nameNum;
-    int name;
-
+    Integer name;
     FirebaseDatabase database;
     DatabaseReference myRef;
-    landingPage landingPage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,7 +75,7 @@ public class getRunning extends AppCompatActivity {
                 String timeTaken_string = timeTaken.getText().toString();
 
                 // Convert to dataType for Firebase Database
-                int distanceTravelled_final = Integer.parseInt(distanceTravelled_string);
+                Double distanceTravelled_final = Double.parseDouble(distanceTravelled_string);
                 int timeTaken_final = Integer.parseInt(timeTaken_string);
                 double distanceTravelled_double = (double) distanceTravelled_final;
 

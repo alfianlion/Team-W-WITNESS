@@ -38,23 +38,11 @@ import java.util.Date;
 public class catalogue extends Fragment{
 
     View view;
-    private FirebaseDatabase database;
-    private String userId;
-    private DatabaseReference myRef;
-    private catalogue cat;
     private Date date;
     private ArrayList<Exercise> datalist = new ArrayList<>();
-    MainActivity mainActivity;
-    SharedPreferences session;
-
 
     public catalogue() {
         // Required empty public constructor
-    }
-
-    public static catalogue newInstance(String param1, String param2) {
-        catalogue fragment = new catalogue();
-        return fragment;
     }
 
     @Override

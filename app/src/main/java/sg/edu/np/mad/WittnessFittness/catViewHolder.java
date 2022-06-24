@@ -14,7 +14,7 @@ public class catViewHolder extends RecyclerView.ViewHolder{
         super(viewItem);
 
         type = viewItem.findViewById(R.id.workoutType);
-        title = viewItem.findViewById(R.id.workoutTitle);
+        title = viewItem.findViewById(R.id.viewWorkoutTitle);
         timeTaken = viewItem.findViewById(R.id.timeTaken);
     }
 }

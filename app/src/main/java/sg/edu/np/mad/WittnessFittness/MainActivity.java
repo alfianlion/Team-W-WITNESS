@@ -3,11 +3,14 @@ package sg.edu.np.mad.WittnessFittness;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,28 +28,21 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
-    private FirebaseDatabase database;
-    private DataSnapshot ds;
     private TextView username, password;
     public String userId;
     SharedPreferences session;
-    private DatabaseReference myRef;
-    Context context = MainActivity.this;
-
-    //1. List to store all Exercise instances(objects) from FB
-    ArrayList<Exercise> exercisesObjList = new ArrayList<Exercise>();
-    //ArrayList<Workout> woList = new ArrayList<Workout>();
-    //ArrayList<Running> runList = new ArrayList<Running>();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //TEST
-//        ReadDBRunnings();
-        setContentView(R.layout.profile_login);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+        {
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
+        }
+
+        setContentView(R.layout.profile_login);
         mAuth = FirebaseAuth.getInstance();
         username = findViewById(R.id.usernameInput);
         password = findViewById(R.id.passwordInput);

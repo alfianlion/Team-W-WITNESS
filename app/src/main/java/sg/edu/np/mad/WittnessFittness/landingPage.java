@@ -5,18 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class landingPage extends AppCompatActivity implements BottomNavigationView.OnItemSelectedListener
 {
     BottomNavigationView bottomNavigationView;
-    private TextView displayDate;
-    private Date date;
+    private int mMenuId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,15 +19,17 @@ public class landingPage extends AppCompatActivity implements BottomNavigationVi
         setContentView(R.layout.activity_main);
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
-        bottomNavigationView.setOnItemSelectedListener(this);
-        bottomNavigationView.setSelectedItemId(R.id.catalog);
 
-//        register = (TextView) findViewById(R.id.registerIntentBtn);
-//        register.setOnClickListener((View.OnClickListener) this);
+        if (savedInstanceState == null){
+            getSupportFragmentManager().beginTransaction().replace(R.id.emptyFrag, new catalogue()).commit();
+            bottomNavigationView.setSelectedItemId(R.id.catalogue);
+            bottomNavigationView.setOnItemSelectedListener(this);
+        }
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
 
         switch (item.getItemId()) {
             case R.id.home:
@@ -41,7 +38,7 @@ public class landingPage extends AppCompatActivity implements BottomNavigationVi
 //                return true;
                 return false;
 
-            case R.id.catalog:
+            case R.id.catalogue:
                 getSupportFragmentManager().beginTransaction().replace(R.id.emptyFrag, new catalogue()).commit();
                 return true;
 

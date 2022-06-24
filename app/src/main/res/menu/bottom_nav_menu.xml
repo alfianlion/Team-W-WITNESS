@@ -2,14 +2,24 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/home"
+        android:checkable="false"
+        android:enabled="false"
+        android:icon="@drawable/ic_home_foreground"
         android:title="Home"
-        android:icon="@drawable/ic_home_foreground"/>
+        android:visible="false" />
     <item
-        android:id="@+id/catalog"
-        android:title="Catalog"
-        android:icon="@drawable/ic_catalog_foreground"/>
+        android:id="@+id/catalogue"
+        android:checkable="false"
+        android:checked="false"
+        android:enabled="true"
+        android:icon="@drawable/ic_catalog_foreground"
+        android:title="Catalogue"
+        android:visible="true" />
     <item
         android:id="@+id/profile"
+        android:checkable="false"
+        android:enabled="true"
+        android:icon="@drawable/ic_person_foreground"
         android:title="Profile"
-        android:icon="@drawable/ic_person_foreground"/>
+        android:visible="true" />
 </menu>
