@@ -6,48 +6,79 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".catalogue">
 
-    <TextView
-        android:id="@+id/catalogueHeader"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
-        android:text="Catalogue"
-        android:textSize="34sp"
-        app:layout_constraintStart_toStartOf="@id/addActivity"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/addActivity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="270dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="20dp"
-        android:insetLeft="0dp"
-        android:text="+ Activity"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.96"
-        app:layout_constraintStart_toEndOf="@+id/catalogueHeader"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/dateDisplay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="75dp"
-        android:text="date"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/catalogueHeader" />
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:stretchColumns="3,0">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/workoutRv"
-        android:layout_width="413dp"
-        android:layout_height="551dp"
-        android:layout_marginTop="100dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dateDisplay" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/catalogueHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="15dp"
+                    android:text="Catalogue"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/maroon_200"
+                    android:textColorHint="@color/maroon_200"
+                    android:textSize="34sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/dateDisplay" />
+
+                <Button
+                    android:id="@+id/addActivity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:text="+ Activity"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.96"
+                    app:layout_constraintStart_toEndOf="@+id/catalogueHeader"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/dateDisplay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginTop="0dp"
+                    android:text="date"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/maroon_500"
+                    android:textColorHint="@color/maroon_500"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/catalogueHeader" />
+            </TableRow>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/workoutRv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="vertical"
+                app:layout_constraintStart_toStartOf="@id/dateDisplay"
+                app:layout_constraintTop_toBottomOf="parent" />
+
+        </TableLayout>
+    </ScrollView>
 
 </FrameLayout>

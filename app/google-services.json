@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:975576450161:android:afbde8c05d340b425d47d0",
+        "mobilesdk_app_id": "1:975576450161:android:15175860c7d5f3075d47d0",
         "android_client_info": {
-          "package_name": "sg.edu.np.mad.inputapp"
+          "package_name": "sg.edu.np.mad.myapplication"
         }
       },
       "oauth_client": [
@@ -37,9 +37,9 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:975576450161:android:fff26942beb231bd5d47d0",
+        "mobilesdk_app_id": "1:975576450161:android:afbde8c05d340b425d47d0",
         "android_client_info": {
-          "package_name": "sg.edu.np.mad.myapplication"
+          "package_name": "sg.edu.np.mad.inputapp"
         }
       },
       "oauth_client": [
