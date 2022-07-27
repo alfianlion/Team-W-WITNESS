@@ -22,7 +22,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.gson.Gson;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -31,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView username, password;
     public String userId;
     SharedPreferences session;
+    public ArrayList<Exercise> datalist = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,12 +96,15 @@ public class MainActivity extends AppCompatActivity {
 
                     //Getting and setting Userid from login for catalog, session and other uses
                     userId = mAuth.getCurrentUser().getUid();
+                    ReadDBRunnings();
                     SharedPreferences.Editor storeUserInfo = session.edit();
                     storeUserInfo.putString("userId",userId);
                     storeUserInfo.commit();
 
                     Toast.makeText(MainActivity.this, "Login Successful",Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(MainActivity.this,landingPage.class));
+                    Intent intent = new Intent(MainActivity.this, landingPage.class);
+                    startActivity(intent);
+
                 } else {
                     Toast.makeText(MainActivity.this, "Failed to login! Please check your credentials",Toast.LENGTH_LONG).show();
                 }
@@ -106,6 +112,77 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    //Set a OnClickListener to execute this mtd(like when user a button to view recyclerView)
+    //** Read FireBase Data to Populate catalogue
+    public void ReadDBRunnings(){
+        //1. Get root node of Firebase [**This needs to be determined as global variable**]
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+        SharedPreferences session = getApplicationContext().getSharedPreferences("userPreference", Context.MODE_PRIVATE);
+
+        //2. Retrieve respective user ID (to locate the item in the node)
+        String id = session.getString("userId","");
+
+        //3. Reference to the User's Exercises
+        DatabaseReference myRef = database.getReference("User/" + id + "/eList/");
+        DatabaseReference myRef2 = database.getReference("User/" + id + "/");
+
+        //4. Check If userID exists in Db (done in authentication)
+//        Query checkUserWO = myRef.child("1"); //checks if user exists in DB
+        //userID matches the key(userID) in the Firebase DB //the query will query all instances the matches the given userID
+
+
+        //5. Read from the database
+        myRef.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(Task<DataSnapshot> task) {
+                //Determines if reference(myRef) has been made successfully, so in order to read the obj the snapShot should be able to access Exercises/Workouts/
+                if(task.isSuccessful()){
+
+                    //**FOR LOOP**
+                    for (DataSnapshot ds : task.getResult().getChildren()){  //for all snapshot, iterate through all snapshots
+
+                        String e = ds.child("type").getValue(String.class);
+                        System.out.println("Object: " + e);
+
+                        if (e.equals("Running")){
+                            Exercise r = ds.getValue(Running.class);
+                            datalist.add(r);
+                            System.out.println("Run DONE");
+                        } else if (e.equals("Workout")){
+                            Exercise w = ds.getValue(Workout.class);
+                            System.out.println(w);
+                            datalist.add(w);
+                            System.out.println("Workout DONE");
+                        } else{
+                            continue;
+                        }
+                    }
+
+                    Gson gson = new Gson();
+                    String json = gson.toJson(datalist);
+                    SharedPreferences.Editor storeUserInfo = session.edit();
+                    storeUserInfo.putString("exercises",json);
+                    storeUserInfo.commit();
+                }
+            }
+        });
+
+        myRef2.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(Task<DataSnapshot> task) {
+                // To ensure it does not store the previous iteration data
+
+                //Determines if reference(myRef) has been made successfully, so in order to read the obj the snapShot should be able to access Exercises/Workouts/
+                if(task.isSuccessful()){
+                    String e = task.getResult().child("name").getValue(String.class);
+                    SharedPreferences.Editor storeUserInfo = session.edit();
+                    storeUserInfo.putString("name",e);
+                    storeUserInfo.commit();
+                }
+            }
+        });
+    }
 
     /*
     //** Read FireBase Data to Populate catalogue

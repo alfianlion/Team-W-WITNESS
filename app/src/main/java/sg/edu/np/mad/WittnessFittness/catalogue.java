@@ -18,153 +18,86 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link catalogue#newInstance} factory method to
- * create an instance of this fragment.
- */
+public class catalogue extends Fragment implements catalogueAdapter.ItemClickListener{
 
-public class catalogue extends Fragment{
+        View view;
+        private Date date;
+        MainActivity mainActivity;
+        ArrayList<Exercise> datalist;
 
-    View view;
-    private Date date;
-    private ArrayList<Exercise> datalist = new ArrayList<>();
+        public catalogue() {
+            // Required empty public constructor
+        }
 
-    public catalogue() {
-        // Required empty public constructor
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+
+            SharedPreferences session = requireContext().getSharedPreferences("userPreference", Context.MODE_PRIVATE);
+            Gson gson = new Gson();
+            String json = session.getString("exercises",null);
+            Type type = new TypeToken<ArrayList<Workout>>(){
+            }.getType();
+
+            datalist = gson.fromJson(json, type);
+
+            if(datalist == null){
+                datalist = new ArrayList<>();
+            }
+            System.out.println(datalist.toString());
+        }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+            // Inflate the layout for this fragment
+            view = inflater.inflate(R.layout.fragment_catalogue, container, false);
+
+            date = new Date();
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy");
+            String date_string = sdf.format(date);
+
+            TextView dateDisplay = view.findViewById(R.id.dateDisplay);
+            dateDisplay.setText(date_string);
+
+            RecyclerView rv = view.findViewById(R.id.workoutRv);
+            rv.setHasFixedSize(true);
+            catalogueAdapter adapter = new catalogueAdapter(datalist);
+            LinearLayoutManager layout = new LinearLayoutManager(getContext());
+
+            rv.setLayoutManager(layout);
+            rv.setAdapter(adapter);
+
+            Button addActivity = view.findViewById(R.id.addActivity);
+            addActivity.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent addActivityView = new Intent(getActivity(), selectExercise.class );
+                    startActivity((addActivityView));
+                    ((Activity) getActivity()).overridePendingTransition(0,0);
+                }
+            });
+
+            return view;
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onItemClick(int position) {
+
     }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_catalogue, container, false);
-
-        date = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy");
-        String date_string = sdf.format(date);
-
-        TextView dateDisplay = view.findViewById(R.id.dateDisplay);
-        dateDisplay.setText(date_string);
-
-        Button addActivity = view.findViewById(R.id.addActivity);
-        addActivity.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent addActivityView = new Intent(getActivity(), selectExercise.class );
-                startActivity((addActivityView));
-                ((Activity) getActivity()).overridePendingTransition(0,0);
-            }
-        });
-
-        ReadDBRunnings();
-
-        RecyclerView rv = view.findViewById(R.id.workoutRv);
-        catalogueAdapter adapter = new catalogueAdapter(datalist, catalogue.this);
-        LinearLayoutManager layout = new LinearLayoutManager(getContext());
-
-        rv.setLayoutManager(layout);
-        rv.setAdapter(adapter);
-
-        return view;
-    }
-
-
-    //Set a OnClickListener to execute this mtd(like when user a button to view recyclerView)
-    //** Read FireBase Data to Populate catalogue
-    public void ReadDBRunnings(){
-        //1. Get root node of Firebase [**This needs to be determined as global variable**]
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-
-        SharedPreferences session = getActivity().getSharedPreferences("userPreference", Context.MODE_PRIVATE);
-
-        //2. Retrieve respective user ID (to locate the item in the node)
-        String id = session.getString("userId","");
-
-        //3. Reference to the User's Exercises
-        DatabaseReference myRef = database.getReference("User/" + id + "/eList/");
-        DatabaseReference myRef2 = database.getReference("User/" + id + "/");
-
-        //4. Check If userID exists in Db (done in authentication)
-//        Query checkUserWO = myRef.child("1"); //checks if user exists in DB
-        //userID matches the key(userID) in the Firebase DB //the query will query all instances the matches the given userID
-
-
-        //5. Read from the database
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // To ensure it does not store the previous iteration data
-                datalist.clear();
-
-                //Determines if reference(myRef) has been made successfully, so in order to read the obj the snapShot should be able to access Exercises/Workouts/
-                if(dataSnapshot.exists()){
-
-                    //**FOR LOOP**
-                    for (DataSnapshot ds : dataSnapshot.getChildren()){  //for all snapshot, iterate through all snapshots
-
-                        String e = ds.child("type").getValue(String.class);
-                        System.out.println("Object: " + e);
-
-                        if (e.equals("Running")){
-                            Exercise r = ds.getValue(Running.class);
-                            datalist.add(r);
-                            System.out.println("Run DONE");
-                        } else if (e.equals("Workout")){
-                            Exercise w = ds.getValue(Workout.class);
-                            datalist.add(w);
-                            System.out.println("Workout DONE");
-                        }
-                    }
-
-                }
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Getting Post failed, log a message
-                Log.w(TAG, "loadPost:onCancelled failed", databaseError.toException());
-            }
-        });
-
-        myRef2.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // To ensure it does not store the previous iteration data
-
-                //Determines if reference(myRef) has been made successfully, so in order to read the obj the snapShot should be able to access Exercises/Workouts/
-                if(dataSnapshot.exists()){
-                    String e = dataSnapshot.child("name").getValue(String.class);
-                    SharedPreferences.Editor storeUserInfo = session.edit();
-                    storeUserInfo.putString("name",e);
-                    storeUserInfo.commit();
-                }
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Getting Post failed, log a message
-                Log.w(TAG, "loadPost:onCancelled failed", databaseError.toException());
-            }
-        });
-    }
-
-
 }
