@@ -12,11 +12,13 @@ public class Running extends Exercise{
         return Distance;
     }
 
-    public Running(){super();}
-
     public Running(String title, Integer time, String date, String id, double dist, String type){
         super(title,time,date,id,type);
         Distance = dist;
+    }
+
+    public Running() {
+        super();
     }
 
     @Override

@@ -21,8 +21,8 @@ public class landingPage extends AppCompatActivity implements BottomNavigationVi
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
         if (savedInstanceState == null){
-            getSupportFragmentManager().beginTransaction().replace(R.id.emptyFrag, new catalogue()).commit();
-            bottomNavigationView.setSelectedItemId(R.id.catalogue);
+            getSupportFragmentManager().beginTransaction().replace(R.id.emptyFrag, new home()).commit();
+            bottomNavigationView.setSelectedItemId(R.id.home);
             bottomNavigationView.setOnItemSelectedListener(this);
         }
     }
@@ -34,9 +34,8 @@ public class landingPage extends AppCompatActivity implements BottomNavigationVi
         switch (item.getItemId()) {
             case R.id.home:
 //                *** Enable / uncomment only for Assignment2 ***
-//                getSupportFragmentManager().beginTransaction().replace(R.id.emptyFrag, new home()).commit();
-//                return true;
-                return false;
+                getSupportFragmentManager().beginTransaction().replace(R.id.emptyFrag, new home()).commit();
+                return true;
 
             case R.id.catalogue:
                 getSupportFragmentManager().beginTransaction().replace(R.id.emptyFrag, new catalogue()).commit();
