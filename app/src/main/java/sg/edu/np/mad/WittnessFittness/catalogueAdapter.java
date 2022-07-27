@@ -36,7 +36,11 @@ public class catalogueAdapter extends RecyclerView.Adapter<catViewHolder>{
     public void onBindViewHolder(@NonNull catViewHolder holder, int position) {
         Exercise exercise = datalist.get(position);
         holder.title.setText(exercise.getTitle());
-        holder.timetaken.setText(exercise.getTimeTaken().toString());
+        if(exercise.getTimeTaken() > 1){
+            holder.timetaken.setText(exercise.getTimeTaken().toString() + " minutes");
+        } else {
+            holder.timetaken.setText(exercise.getTimeTaken().toString() + " minute");
+        }
         holder.workout.setText(exercise.getType());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -45,7 +49,7 @@ public class catalogueAdapter extends RecyclerView.Adapter<catViewHolder>{
                 Context currentContext = view.getContext();
                 Intent intent = new Intent(currentContext,ViewActivity.class);
                 intent.putExtra("exerciseTitle", exercise.getTitle());
-                intent.putExtra("exerciseTimeTaken", exercise.getTimeTaken().toString() + "minutes");
+                intent.putExtra("exerciseTimeTaken", exercise.getTimeTaken().toString());
                 intent.putExtra("exerciseType", exercise.getType());
                 currentContext.startActivity(intent);
             }
