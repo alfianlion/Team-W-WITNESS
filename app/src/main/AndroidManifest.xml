@@ -10,21 +10,26 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WittnessFittness.NoActionandStatusBar">
         <activity
-            android:name="sg.edu.np.mad.WittnessFittness.registerNewUser"
+            android:name=".frogotPW"
             android:exported="false" />
         <activity
-            android:name="sg.edu.np.mad.WittnessFittness.getWorkout"
+            android:name=".UpdateProfile"
             android:exported="false" />
         <activity
-            android:name="sg.edu.np.mad.WittnessFittness.getRunning"
+            android:name=".registerNewUser"
             android:exported="false" />
         <activity
-            android:name="sg.edu.np.mad.WittnessFittness.selectExercise"
+            android:name=".getWorkout"
             android:exported="false" />
         <activity
-            android:name="sg.edu.np.mad.WittnessFittness.landingPage"
+            android:name=".getRunning"
             android:exported="false" />
-
+        <activity
+            android:name=".selectExercise"
+            android:exported="false" />
+        <activity
+            android:name=".landingPage"
+            android:exported="false" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 
@@ -41,14 +46,14 @@
             android:value="YOUR_API_KEY" />
 
         <activity
-            android:name="sg.edu.np.mad.WittnessFittness.MainActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>
