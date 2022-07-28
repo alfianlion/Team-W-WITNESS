@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="sg.edu.np.mad.WittnessFittness" >
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -30,6 +35,8 @@
         <activity
             android:name=".landingPage"
             android:exported="false" />
+        <activity android:name=".weatherChecker"
+            android:exported="false"/>
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 
