@@ -1,5 +1,7 @@
 package sg.edu.np.mad.WittnessFittness;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -43,7 +45,7 @@ public class UpdateProfile extends AppCompatActivity {
 
         Intent receive = getIntent();
         UID = receive.getStringExtra("UID");
-        Email = reference.child(UID).child("email").toString();
+        Email = mAuth.getCurrentUser().getEmail().toString();
 
         resetButt.setOnClickListener(new View.OnClickListener() {
             @Override
