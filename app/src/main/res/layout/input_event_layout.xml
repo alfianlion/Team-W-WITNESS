@@ -27,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Gender" />
+        android:text="Type" />
 
     <RadioGroup
         android:id="@+id/rb_group"
@@ -36,26 +36,26 @@
         android:orientation="horizontal">
 
         <RadioButton
-            android:id="@+id/rb_male"
+            android:id="@+id/rb_workout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Male"
+            android:text="Workout"
             android:checked="true"/>
 
         <RadioButton
-            android:id="@+id/rb_female"
+            android:id="@+id/rb_running"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Female" />
+            android:text="Running" />
     </RadioGroup>
 
 
     <EditText
-        android:id="@+id/et_major"
+        android:id="@+id/et_timeAllocated"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textCapSentences"
-        android:hint="Major (course)"/>
+        android:hint="Time Allocated (min/sec)"/>
 
 
     <LinearLayout
@@ -64,15 +64,15 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/et_registrationDate"
+            android:id="@+id/et_dateOfEvent"
             android:enabled="false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="Registration Date" />
+            android:hint="Date of Event" />
 
         <Button
-            android:id="@+id/btnRegistrationDate"
+            android:id="@+id/btnDateOfEvent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Date" />

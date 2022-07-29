@@ -27,6 +27,7 @@ public class registerNewUser extends AppCompatActivity implements View.OnClickLi
     private FirebaseAuth mAuth;
     private EditText ETname,ETemail,ETpassword;
     private ArrayList<Exercise> eList = new ArrayList<>();
+    private ArrayList<CalendarEvent> calList = new ArrayList<>();
     private TextView registerbtn;
 
     @Override
@@ -43,6 +44,7 @@ public class registerNewUser extends AppCompatActivity implements View.OnClickLi
         ETpassword = (EditText) findViewById(R.id.passwordInput);
         ETemail = (EditText) findViewById(R.id.emailInput);
         eList = new ArrayList<>();
+        calList = new ArrayList<>(); //CalendarList to store CalendarEvents
     }
 
     @Override
@@ -50,13 +52,13 @@ public class registerNewUser extends AppCompatActivity implements View.OnClickLi
         switch (v.getId()){
             case R.id.registerSaveBtn:
                 registerUser(ETemail.getText().toString(),ETname.getText().toString(),
-                        ETpassword.getText().toString(), eList);
+                        ETpassword.getText().toString(), eList, calList);
 //                startActivity(new Intent(this,MainActivity.class));
                 break;
         }
     }
 
-    private void registerUser(String e,String n,String p, ArrayList<Exercise> eList){
+    private void registerUser(String e,String n,String p, ArrayList<Exercise> eList, ArrayList<CalendarEvent> calList){
         String email = e;
         String name = n;
         String password = p;
@@ -98,28 +100,33 @@ public class registerNewUser extends AppCompatActivity implements View.OnClickLi
                             DatabaseReference userId = FirebaseDatabase.getInstance().getReference("User")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid());
 
+                            //Default List obj used to store Exercise Objects and CalendarEvent Objects
                             Exercise w1 = new Running("Test",1, date_string, userId.getKey(),1,"Test");
-                            eList.add(w1);
+                            eList.add(w1); //Default Excercise obj, to be inserted into eList as a node
 
-                            User user = new User(name,password,email,eList);
+                            CalendarEvent cal1 = new CalendarEvent("Test", "Type default", "TA default",0);
+                            calList.add(cal1); //Default CalEvent obj, to be inserted into calList as a node
+
+                            //Instantiating an User obj (to be created in the FbDB)
+                            User user = new User(name,password,email,eList, calList);
 
                             FirebaseDatabase.getInstance().getReference("User")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                     .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-                                            if(task.isSuccessful()){
-                                                Toast.makeText(registerNewUser.this,"User has been successfully registered",
-                                                        Toast.LENGTH_LONG).show();
-                                                finish();
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if(task.isSuccessful()){
+                                        Toast.makeText(registerNewUser.this,"User has been successfully registered",
+                                                Toast.LENGTH_LONG).show();
+                                        finish();
 
-                                                //Redirect user to login page/homepage/layout
-                                            }else{
-                                                Toast.makeText(registerNewUser.this, "Failed to register. Please try again",
-                                                        Toast.LENGTH_LONG).show();
-                                            }
-                                        }
-                                    });
+                                        //Redirect user to login page/homepage/layout
+                                    }else{
+                                        Toast.makeText(registerNewUser.this, "Failed to register. Please try again",
+                                                Toast.LENGTH_LONG).show();
+                                    }
+                                }
+                            });
                         }else{
                             Toast.makeText(registerNewUser.this, "Failed to register. Please try again",
                                     Toast.LENGTH_LONG).show();

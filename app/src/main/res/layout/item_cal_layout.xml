@@ -19,23 +19,23 @@
             android:text="Name (Focus)"/>
 
         <TextView
-            android:id="@+id/tv_gender"
+            android:id="@+id/tv_exerciseType"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Type (Gender)"/>
+            android:text="Type"/>
 
         <TextView
-            android:id="@+id/tv_major"
+            android:id="@+id/tv_timeAllocated"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Time allocated (Major)"/>
+            android:text="Time allocated"/>
 
         <TextView
-            android:id="@+id/tv_dateOfRegistration"
+            android:id="@+id/tv_dateOfEvent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Date (Date of Registration)"/>
+            android:text="Date"/>
     </LinearLayout>
 
 
