@@ -101,7 +101,7 @@ public class registerNewUser extends AppCompatActivity implements View.OnClickLi
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid());
 
                             //Default List obj used to store Exercise Objects and CalendarEvent Objects
-                            Exercise w1 = new Running("Test",1, date_string, userId.getKey(),1,"Test");
+                            Exercise w1 = new Running("Test",1, date_string, userId.getKey(),1,"Test", "false");
                             eList.add(w1); //Default Excercise obj, to be inserted into eList as a node
 
                             CalendarEvent cal1 = new CalendarEvent("Test", "Type default", "TA default",0);

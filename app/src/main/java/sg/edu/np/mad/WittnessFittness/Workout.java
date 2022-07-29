@@ -28,8 +28,8 @@ public class Workout extends Exercise{
         super();
     }
 
-    public Workout(String title, Integer time, String date, String id, int reps, int sets, String type){
-        super(title,time,date,id,type);
+    public Workout(String title, Integer time, String date, String id, int reps, int sets, String type, String fav){
+        super(title,time,date,id,type,fav);
         NumOfSets = sets;
         NumOfReps = reps;
     }

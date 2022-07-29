@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import java.util.List;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link home#} factory method to
@@ -46,6 +48,14 @@ public class home extends Fragment {
             }
         });
 
+        Button favouriteBtn = view.findViewById(R.id.toFavourite);
+        favouriteBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toFavourite(v);
+            }
+        });
+
         return view;
     }
 
@@ -57,5 +67,10 @@ public class home extends Fragment {
     private void toCalender(View v) {
         Intent calenderPage = new Intent(v.getContext(), CalendarActivity.class);
         startActivity(calenderPage);
+    }
+
+    private void toFavourite(View v) {
+        Intent favouritePage = new Intent(v.getContext(), ListFavourite.class);
+        startActivity(favouritePage);
     }
 }

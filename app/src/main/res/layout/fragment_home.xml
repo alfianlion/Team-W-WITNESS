@@ -23,4 +23,12 @@
         android:layout_marginTop="200sp"
         android:text="Weather" />
 
+    <Button
+        android:id="@+id/toFavourite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="155sp"
+        android:layout_marginTop="400sp"
+        android:text="Favourites" />
+
 </FrameLayout>

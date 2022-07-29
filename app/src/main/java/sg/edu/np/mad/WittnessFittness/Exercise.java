@@ -7,14 +7,16 @@ abstract public class Exercise {
     String DateDone;
     String UserID;
     String Type;
+    String Favourite;
 
     //Constructor
-    public Exercise(String title,Integer time,String date,String id,String type){
+    public Exercise(String title,Integer time,String date,String id,String type, String fav){
         Title = title;
         TimeTaken = time;
         DateDone = date;
         UserID = id;
         Type = type;
+        Favourite = fav;
     }
 
     public Exercise(){}
@@ -57,6 +59,13 @@ abstract public class Exercise {
     }
     public String getType(){
         return Type;
+    }
+    //Type
+    public void setFavourite(String fav){
+        Favourite = fav;
+    }
+    public String getFavourite(){
+        return Favourite;
     }
 
 }

@@ -51,6 +51,8 @@ public class catalogueAdapter extends RecyclerView.Adapter<catViewHolder>{
                 intent.putExtra("exerciseTitle", exercise.getTitle());
                 intent.putExtra("exerciseTimeTaken", exercise.getTimeTaken().toString());
                 intent.putExtra("exerciseType", exercise.getType());
+                intent.putExtra("exerciseUserID", exercise.getUserID());
+
                 currentContext.startActivity(intent);
             }
         });

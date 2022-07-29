@@ -90,7 +90,7 @@ public class getWorkout extends AppCompatActivity {
                 */
 
                 //6. Create and Store workout obj in local DB
-                Exercise workoutObj = new Workout(woTitle_string,timeTaken_final,date_string,id,numReps_final,numSets_final,type);
+                Exercise workoutObj = new Workout(woTitle_string,timeTaken_final,date_string,id,numReps_final,numSets_final,type,"false");
 
                 //Toast message to indicate successful recording
                 Toast.makeText(getWorkout.this, "WORKOUT RECORDED", Toast.LENGTH_SHORT).show();

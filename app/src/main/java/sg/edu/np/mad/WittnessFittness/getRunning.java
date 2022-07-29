@@ -80,7 +80,7 @@ public class getRunning extends AppCompatActivity {
                 double distanceTravelled_double = (double) distanceTravelled_final;
 
                 //6. Create and Store running obj in local DB
-                Running runningObj = new Running(woTitle_string, timeTaken_final, date_string, id, distanceTravelled_double, type);
+                Running runningObj = new Running(woTitle_string, timeTaken_final, date_string, id, distanceTravelled_double, type, "false");
 
                 //Toast message to indicate successful recording
                 Toast.makeText(getRunning.this, "RUN RECORDED", Toast.LENGTH_SHORT).show();
