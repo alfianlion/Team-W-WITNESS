@@ -23,14 +23,14 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
-
+import org.w3c.dom.Text;
 import java.io.Serializable;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
-    private TextView username, password;
+    private TextView username, password,forgotPW;
     public String userId;
     SharedPreferences session;
     public ArrayList<Exercise> datalist = new ArrayList<>();
@@ -55,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
 
         session = getSharedPreferences("userPreference",Context.MODE_PRIVATE);
 
+        forgotPW = (TextView) findViewById(R.id.LoginChangePW);
+        forgotPW.setOnClickListener(this::onClick);
         registerBtn.setOnClickListener(this::onClick);
         loginBtn.setOnClickListener(this::onClick);
     }
@@ -69,8 +71,14 @@ public class MainActivity extends AppCompatActivity {
                 Intent registerPage = new Intent(MainActivity.this, registerNewUser.class);
                 startActivity(registerPage);
                 break;
+
+            case R.id.LoginChangePW:
+                Intent forgotpw = new Intent(MainActivity.this,frogotPW.class);
+                startActivity(forgotpw);
+                break;
         }
     }
+
 
     private void userLogin(String u, String p){
         String username_string = u;

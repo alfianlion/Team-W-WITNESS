@@ -28,7 +28,7 @@ public class profile extends Fragment {
     }
 
     private View view;
-    private Button logout;
+    private Button logout,gotoUpdate;
     private Date date;
 
     @Override
@@ -46,6 +46,7 @@ public class profile extends Fragment {
 
         //2. Retrieve respective user name (to locate the item in the node)
         String name = session.getString("name","");
+        String UID = session.getString("userId","");
 
         TextView username = view.findViewById(R.id.username);
         username.setText("Hello " + name);
@@ -63,11 +64,28 @@ public class profile extends Fragment {
                 logOut(v);
             }
         });
+
+        gotoUpdate = view.findViewById(R.id.editProfile);
+        gotoUpdate.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                    setGotoUpdate(v,UID);
+            }
+        });
+
         return view;
     }
 
     private void logOut(View v){
         Intent logout = new Intent(v.getContext(),MainActivity.class);
         startActivity(logout);
+    }
+
+    private void setGotoUpdate(View v,String uid){
+        Bundle packed = new Bundle();
+        packed.putString("UID",uid);
+        Intent goUpdate = new Intent(v.getContext(),UpdateProfile.class);
+        goUpdate.putExtras(packed);
+        startActivity(goUpdate);
     }
 }
