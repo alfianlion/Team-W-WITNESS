@@ -37,11 +37,25 @@ public class home extends Fragment {
                 toWeather(v);
             }
         });
+
+        Button calenderBtn = view.findViewById(R.id.toCalender);
+        calenderBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toCalender(v);
+            }
+        });
+
         return view;
     }
 
     private void toWeather(View v) {
         Intent weatherPage = new Intent(v.getContext(), weatherChecker.class);
         startActivity(weatherPage);
+    }
+
+    private void toCalender(View v) {
+        Intent calenderPage = new Intent(v.getContext(), CalendarActivity.class);
+        startActivity(calenderPage);
     }
 }

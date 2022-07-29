@@ -8,11 +8,19 @@
     <!-- TODO: Update blank fragment layout -->
 
     <Button
+        android:id="@+id/toCalender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="155sp"
+        android:layout_marginTop="300sp"
+        android:text="Calender" />
+
+    <Button
         android:id="@+id/toWeather"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="175sp"
         android:layout_marginLeft="155sp"
-        android:text="Button" />
+        android:layout_marginTop="200sp"
+        android:text="Weather" />
 
 </FrameLayout>
