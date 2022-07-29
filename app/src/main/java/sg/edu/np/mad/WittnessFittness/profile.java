@@ -44,7 +44,7 @@ public class profile extends Fragment {
 
         SharedPreferences session = getActivity().getSharedPreferences("userPreference", Context.MODE_PRIVATE);
 
-        //2. Retrieve respective user ID (to locate the item in the node)
+        //2. Retrieve respective user name (to locate the item in the node)
         String name = session.getString("name","");
         String UID = session.getString("userId","");
 

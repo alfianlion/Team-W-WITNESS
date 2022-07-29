@@ -7,14 +7,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class catViewHolder extends RecyclerView.ViewHolder{
     TextView title;
-    TextView type;
-    TextView timeTaken;
+    TextView timetaken;
+    TextView workout;
 
     public catViewHolder(View viewItem){
         super(viewItem);
 
-        type = viewItem.findViewById(R.id.workoutType);
         title = viewItem.findViewById(R.id.viewWorkoutTitle);
-        timeTaken = viewItem.findViewById(R.id.timeTaken);
+        timetaken = viewItem.findViewById(R.id.timeTaken);
+        workout = viewItem.findViewById(R.id.workoutType);
     }
 }

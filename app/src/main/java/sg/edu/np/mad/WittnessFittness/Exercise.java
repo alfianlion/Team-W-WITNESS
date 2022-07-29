@@ -8,8 +8,6 @@ abstract public class Exercise {
     String UserID;
     String Type;
 
-    public Exercise(){}
-
     //Constructor
     public Exercise(String title,Integer time,String date,String id,String type){
         Title = title;
@@ -18,6 +16,8 @@ abstract public class Exercise {
         UserID = id;
         Type = type;
     }
+
+    public Exercise(){}
 
     //Title
     public void setTitle(String title){
