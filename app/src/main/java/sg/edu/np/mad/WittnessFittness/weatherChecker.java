@@ -60,9 +60,9 @@ public class weatherChecker extends AppCompatActivity implements LocationListene
     @Override
     public void onLocationChanged(Location location) {
         txtLat = (TextView) findViewById(R.id.locationDisplay);
-        txtLat.setText("Latitude:" + location.getLatitude() + ", Longitude:" + location.getLongitude());
+        txtLat.setText("Latitude:" + Math.round(location.getLatitude()) + ", Longitude:" + Math.round(location.getLongitude()));
         String tempUrl = "";
-        tempUrl = url + "?lat=" + location.getLatitude() + "&lon=" + location.getLongitude() + "&appid=" + appId;
+        tempUrl = url + "?lat=" + Math.round(location.getLatitude()) + "&lon=" + Math.round(location.getLongitude()) + "&appid=" + appId;
         StringRequest stringRequest = new StringRequest(Request.Method.POST, tempUrl, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
