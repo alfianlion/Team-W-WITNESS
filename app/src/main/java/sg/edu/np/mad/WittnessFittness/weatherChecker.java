@@ -92,4 +92,7 @@ public class weatherChecker extends AppCompatActivity implements LocationListene
     public void onStatusChanged(String provider, int status, Bundle extras) {
         Log.d("Latitude","status");
     }
+
+
+
 }

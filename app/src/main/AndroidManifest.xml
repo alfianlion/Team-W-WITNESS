@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="sg.edu.np.mad.WittnessFittness" >
+    package="sg.edu.np.mad.WittnessFittness">
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -13,7 +13,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.WittnessFittness.NoActionandStatusBar" >
+        android:theme="@style/Theme.WittnessFittness.NoActionandStatusBar">
+        <activity
+            android:name=".askForLocation"
+            android:exported="false" />
         <activity
             android:name=".frogotPW"
             android:exported="false" />
@@ -41,8 +44,9 @@
         <activity
             android:name=".landingPage"
             android:exported="false" />
-        <activity android:name=".weatherChecker"
-            android:exported="false"/>
+        <activity
+            android:name=".weatherChecker"
+            android:exported="false" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 
@@ -61,7 +65,6 @@
         <activity
             android:name=".MainActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

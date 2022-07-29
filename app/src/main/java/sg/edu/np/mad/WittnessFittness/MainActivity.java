@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
                     storeUserInfo.commit();
 
                     Toast.makeText(MainActivity.this, "Login Successful",Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(MainActivity.this, landingPage.class);
+                    Intent intent = new Intent(MainActivity.this, askForLocation.class);
                     startActivity(intent);
 
                 } else {
