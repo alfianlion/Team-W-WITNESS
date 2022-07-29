@@ -18,13 +18,13 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 
-//adapter for the RV
+//adapter for the RV (activity_calendar.xml)
 @RequiresApi(api = Build.VERSION_CODES.N)
 public class AdapterItem extends RecyclerView.Adapter<AdapterItem.ItemViewHolder> {
 
     //Variables
     Context context;
-    ArrayList<dataUser> dataUserArrayList; //arrayList containing DataUser objects (from constructor)
+    ArrayList<CalendarEvent> calEventArrayList; //arrayList containing DataUser objects (from constructor)
 
     //
     Locale id = new Locale("in", "ID");
@@ -32,25 +32,24 @@ public class AdapterItem extends RecyclerView.Adapter<AdapterItem.ItemViewHolder
 
 
     //Constructor (for Adapter)
-    public AdapterItem(Context context, ArrayList<dataUser> dataUserArrayList) {
+    public AdapterItem(Context context, ArrayList<CalendarEvent> calEventArrayList) {
         this.context = context;
-        this.dataUserArrayList = dataUserArrayList;
+        this.calEventArrayList = calEventArrayList;
     }
 
 
 
     //onCreateViewHolder, called when a new view is required
-    // to inflate the context(MainActivity.js) with this ViewHolders
+    // to inflate the context(CalendarActivity.js) with this ViewHolders
     @NonNull
     @Override
     public AdapterItem.ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        //inflate the context view (MainActivity.js) with the viewHolders
-        //View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_layout, parent, false);
+        //inflate the context view (CalendarActivity.js) with the viewHolders
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_cal_layout, parent, false);
 
         //return inflated view, by calling ItemViewHolder
-        //return new ItemViewHolder(itemView);
-        return null;
+        return new ItemViewHolder(itemView);
     }
 
 
@@ -59,8 +58,7 @@ public class AdapterItem extends RecyclerView.Adapter<AdapterItem.ItemViewHolder
     //onBindViewHolder, to Bind the data to View Holder
     @Override
     public void onBindViewHolder(@NonNull AdapterItem.ItemViewHolder holder, int position) {
-        holder.viewBind(dataUserArrayList.get(position));
-
+        holder.viewBind(calEventArrayList.get(position));
     }
 
 
@@ -68,7 +66,7 @@ public class AdapterItem extends RecyclerView.Adapter<AdapterItem.ItemViewHolder
     //getItemCount, retrieve the total number of items to bind
     @Override
     public int getItemCount() {
-        return dataUserArrayList.size();
+        return calEventArrayList.size();
     }
 
 
@@ -76,25 +74,25 @@ public class AdapterItem extends RecyclerView.Adapter<AdapterItem.ItemViewHolder
     //View Holder, to retrieve and access all the items used during binding process
     public class ItemViewHolder extends RecyclerView.ViewHolder {
         TextView tv_name,
-                tv_gender,
-                tv_major,
-                tv_dateOfRegistration;
+                tv_exerciseType,
+                tv_timeAllocated,
+                tv_dateOfEvent;
 
         public ItemViewHolder(@NonNull View itemView) {
             super(itemView);
-            //tv_name = itemView.findViewById(R.id.tv_name);
-            //tv_gender = itemView.findViewById(R.id.tv_gender);
-            //tv_major = itemView.findViewById(R.id.tv_major);
-            //tv_dateOfRegistration = itemView.findViewById(R.id.tv_dateOfRegistration);
+            tv_name = itemView.findViewById(R.id.tv_name);
+            tv_exerciseType = itemView.findViewById(R.id.tv_exerciseType);
+            tv_timeAllocated = itemView.findViewById(R.id.tv_timeAllocated);
+            tv_dateOfEvent = itemView.findViewById(R.id.tv_dateOfEvent);
         }
 
         //Bind, the retrieved item, to the view data (dataUser).
-        public void viewBind(dataUser dataUser) {
+        public void viewBind(CalendarEvent calendarEvent) {
 
-            tv_name.setText(dataUser.getName());
-            tv_gender.setText(dataUser.getGender());
-            tv_major.setText(dataUser.getMajor());
-            tv_dateOfRegistration.setText(simpleDateFormat.format(dataUser.getDateOfRegistration()));
+            tv_name.setText(calendarEvent.getName());
+            tv_exerciseType.setText(calendarEvent.getType());
+            tv_timeAllocated.setText(calendarEvent.getTimeAllocated());
+            tv_dateOfEvent.setText(simpleDateFormat.format(calendarEvent.getDateOfEvent()));
         }
 
     }
