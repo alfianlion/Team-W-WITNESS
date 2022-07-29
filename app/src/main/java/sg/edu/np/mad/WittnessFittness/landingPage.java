@@ -4,8 +4,10 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -28,6 +30,8 @@ public class landingPage extends AppCompatActivity implements BottomNavigationVi
             bottomNavigationView.setSelectedItemId(R.id.home);
             bottomNavigationView.setOnItemSelectedListener(this);
         }
+
+        ActivityCompat.requestPermissions(landingPage.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, PackageManager.PERMISSION_GRANTED);
     }
 
     @Override
