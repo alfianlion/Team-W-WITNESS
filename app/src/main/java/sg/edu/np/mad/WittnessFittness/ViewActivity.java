@@ -23,7 +23,11 @@ public class ViewActivity extends AppCompatActivity {
         TextView workouttypetxt = findViewById(R.id.workoutType);
 
         titletxt.setText(title);
-        timetakentxt.setText(timetaken + "minutes");
+        if (timetaken == "1"){
+            timetakentxt.setText(timetaken + "minute");
+        } else {
+            timetakentxt.setText(timetaken + "minutes");
+        }
         workouttypetxt.setText(type);
     }
 }
