@@ -3,6 +3,7 @@ package sg.edu.np.mad.WittnessFittness;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -30,7 +31,7 @@ public class home extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_home, container, false);
-        Button weatherBtn = view.findViewById(R.id.toWeather);
+        CardView weatherBtn = view.findViewById(R.id.weatherCard);
         weatherBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -38,7 +39,7 @@ public class home extends Fragment {
             }
         });
 
-        Button calenderBtn = view.findViewById(R.id.toCalender);
+        CardView calenderBtn = view.findViewById(R.id.calanderCard);
         calenderBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
