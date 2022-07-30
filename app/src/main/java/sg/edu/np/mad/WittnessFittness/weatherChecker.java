@@ -111,15 +111,15 @@ public class weatherChecker extends AppCompatActivity implements LocationListene
                     temperature.setText("Temperature: "+df.format(temp) + " Celcuis");
                     humidity.setText("Humidity: "+ humid + " %");
 
-                    if (main == "Clear") {
-                        icon.setImageDrawable(getResources().getDrawable(R.drawable.clearsky));
-                    } else if (main == "Clouds") {
-                        icon.setImageDrawable(getResources().getDrawable(R.drawable.cloudy));
-                    } else if (main == "Thunderstorm") {
-                        icon.setImageDrawable(getResources().getDrawable(R.drawable.thunderstorm));
-                    } else if (main == "") {
-
-                    }
+//                    if (main == "Clear") {
+//                        icon.setImageDrawable(getResources().getDrawable(R.drawable.clearsky));
+//                    } else if (main == "Clouds") {
+//                        icon.setImageDrawable(getResources().getDrawable(R.drawable.cloudy));
+//                    } else if (main == "Thunderstorm") {
+//                        icon.setImageDrawable(getResources().getDrawable(R.drawable.thunderstorm));
+//                    } else if (main == "") {
+//
+//                    }
 
                 } catch (JSONException e) {
                     e.printStackTrace();

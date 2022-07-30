@@ -17,7 +17,7 @@ public class favAdapter extends RecyclerView.Adapter<favAdapter.favViewHolder>{
     ArrayList<Exercise> datalist;
 
     public favAdapter(ArrayList<Exercise> dbdata) {
-        this.datalist = dbdata;
+        datalist = dbdata;
     }
 
     public class favViewHolder extends RecyclerView.ViewHolder{
@@ -35,6 +35,10 @@ public class favAdapter extends RecyclerView.Adapter<favAdapter.favViewHolder>{
         }
     }
 
+    public int getItemViewType(final int position) {
+        return R.layout.fav_rsv;
+    }
+
     @NonNull
     @Override
     public favAdapter.favViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -45,6 +49,7 @@ public class favAdapter extends RecyclerView.Adapter<favAdapter.favViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull favAdapter.favViewHolder holder, int position) {
         Exercise exercise = datalist.get(position);
+        System.out.println(datalist.toString() + "hello");
         holder.title.setText(exercise.getTitle());
         if(exercise.getTimeTaken() > 1){
             holder.timetaken.setText(exercise.getTimeTaken().toString() + " minutes");

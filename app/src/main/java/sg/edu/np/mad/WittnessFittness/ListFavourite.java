@@ -2,6 +2,7 @@ package sg.edu.np.mad.WittnessFittness;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -38,14 +39,25 @@ public class ListFavourite extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_favourite);
 
-        datalist = new ArrayList<>();
-
+        datalist.clear();
         DALExercise();
+
+        SharedPreferences session = ListFavourite.this.getSharedPreferences("userPreference", Context.MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = session.getString("fav",null);
+        Type type = new TypeToken<ArrayList<Workout>>(){
+        }.getType();
+
+        datalist = gson.fromJson(json, type);
+        if(datalist == null){
+            datalist = new ArrayList<>();
+        }
 
         RecyclerView rv = findViewById(R.id.listRV);
         rv.setHasFixedSize(true);
         adapter = new favAdapter(datalist);
         LinearLayoutManager layout = new LinearLayoutManager(this);
+        rv.setItemAnimator(new DefaultItemAnimator());
         rv.setLayoutManager(layout);
         rv.setAdapter(adapter);
     }
@@ -73,23 +85,31 @@ public class ListFavourite extends AppCompatActivity {
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 SharedPreferences session = getApplicationContext().getSharedPreferences("userPreference", Context.MODE_PRIVATE);
                 String t = session.getString("title","");
-                for (DataSnapshot zoneSnapshot: task.getResult().getChildren()) {
-                    String fav = zoneSnapshot.child("favourite").getValue(String.class);
-                    String e = zoneSnapshot.child("type").getValue(String.class);
-                    System.out.println("Object: " + e);
+                if (task.isSuccessful()){
+                    for (DataSnapshot zoneSnapshot: task.getResult().getChildren()) {
+                        String fav = zoneSnapshot.child("favourite").getValue(String.class);
+                        String e = zoneSnapshot.child("type").getValue(String.class);
+                        System.out.println("Object: " + e);
 
-                    if (e.equals("Running") && fav.equals("true")){
-                        Exercise r = zoneSnapshot.getValue(Running.class);
-                        datalist.add(r);
-                        System.out.println("Run DONE");
-                    } else if (e.equals("Workout")  && fav.equals("true")){
-                        Exercise w = zoneSnapshot.getValue(Workout.class);
-                        System.out.println(w);
-                        datalist.add(w);
-                        System.out.println("Workout DONE");
-                    } else{
-                        continue;
+                        if (e.equals("Running") && fav.equals("true")){
+                            Exercise r = zoneSnapshot.getValue(Running.class);
+                            datalist.add(r);
+                            System.out.println("Run DONE");
+                        } else if (e.equals("Workout")  && fav.equals("true")){
+                            Exercise w = zoneSnapshot.getValue(Workout.class);
+                            System.out.println(w);
+                            datalist.add(w);
+                            System.out.println("Workout DONE");
+                        } else{
+                            continue;
+                        }
                     }
+
+                    Gson gson = new Gson();
+                    String json = gson.toJson(datalist);
+                    SharedPreferences.Editor storeUserInfo = session.edit();
+                    storeUserInfo.putString("fav",json);
+                    storeUserInfo.commit();
                 }
             }
         });
