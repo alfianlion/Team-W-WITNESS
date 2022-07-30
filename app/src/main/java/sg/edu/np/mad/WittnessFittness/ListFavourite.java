@@ -39,7 +39,10 @@ public class ListFavourite extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_favourite);
 
-        datalist.clear();
+        if (datalist != null){
+            datalist.clear();
+        }
+
         DALExercise();
 
         SharedPreferences session = ListFavourite.this.getSharedPreferences("userPreference", Context.MODE_PRIVATE);
@@ -83,6 +86,7 @@ public class ListFavourite extends AppCompatActivity {
         exercisechild.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
+                datalist.clear();
                 SharedPreferences session = getApplicationContext().getSharedPreferences("userPreference", Context.MODE_PRIVATE);
                 String t = session.getString("title","");
                 if (task.isSuccessful()){
