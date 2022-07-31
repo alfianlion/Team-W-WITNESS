@@ -49,7 +49,7 @@ public class home extends Fragment {
             }
         });
 
-        Button favouriteBtn = view.findViewById(R.id.toFavourite);
+        CardView favouriteBtn = view.findViewById(R.id.favouriteCard);
         favouriteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

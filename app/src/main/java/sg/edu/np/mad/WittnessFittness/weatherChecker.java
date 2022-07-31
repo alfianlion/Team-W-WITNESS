@@ -126,24 +126,13 @@ public class weatherChecker extends AppCompatActivity implements LocationListene
                     temperature.setText("Temperature: "+df.format(temp) + " Celcuis");
                     humidity.setText("Humidity: "+ humid + " %");
 
-<<<<<<< HEAD
-//                    if (main == "Clear") {
-//                        icon.setImageDrawable(getResources().getDrawable(R.drawable.clearsky));
-//                    } else if (main == "Clouds") {
-//                        icon.setImageDrawable(getResources().getDrawable(R.drawable.cloudy));
-//                    } else if (main == "Thunderstorm") {
-//                        icon.setImageDrawable(getResources().getDrawable(R.drawable.thunderstorm));
-//                    } else if (main == "") {
-//
-//                    }
-=======
                     if ( main.equals("Clear")) {
                         icon.setImageDrawable(getResources().getDrawable(R.drawable.clearsky));
                         recs.setText("Good weather to go outside! \n  \nRecommendations \n\n Cardio : \n - Run  \n - Swimming \n - Cycling \n\n Low Intensity Workouts \n - Walking \n Jogging");
 
                     } else if ( main.equals("Clouds")) {
                         if (description.equals("few clouds")){
-                            icon.setImageDrawable(getResources().getDrawable(R.drawable.partiallycloudy));
+                            icon.setImageDrawable(getResources().getDrawable(R.drawable.cloudy));
                             recs.setText("Recommendations \n\n Cardio : \n - Run  \n - Swimming \n\n Low Intensity Workouts \n - Walking \n Jogging");
                         }
                         else{
@@ -162,7 +151,6 @@ public class weatherChecker extends AppCompatActivity implements LocationListene
                         String exercises = ("Stay indoors today! \n\n Reccomendations : \n\n Cardio: \n - Burpees \n - Squat jumps \n - Jump Ropes \n\n Low Intensity Workouts : \n - Yoga ");
                         recs.setText(exercises);
                     }
->>>>>>> origin/huixin
 
                     returnToHome.setOnClickListener(new View.OnClickListener() {
                         @Override
