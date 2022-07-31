@@ -104,11 +104,12 @@ public class MainActivity extends AppCompatActivity {
 
                     //Getting and setting Userid from login for catalog, session and other uses
                     userId = mAuth.getCurrentUser().getUid();
-                    ReadDBRunnings();
+
                     SharedPreferences.Editor storeUserInfo = session.edit();
                     storeUserInfo.putString("userId",userId);
+                    storeUserInfo.putString("name",username.getText().toString());
                     storeUserInfo.commit();
-
+                    ReadDBRunnings();
                     Toast.makeText(MainActivity.this, "Login Successful",Toast.LENGTH_SHORT).show();
                     SharedPreferences sharedPreferences = getSharedPreferences("preferences", MODE_PRIVATE);
                     String prevStarted = "yes";
@@ -198,7 +199,6 @@ public class MainActivity extends AppCompatActivity {
                 if(task.isSuccessful()){
                     String e = task.getResult().child("name").getValue(String.class);
                     SharedPreferences.Editor storeUserInfo = session.edit();
-                    storeUserInfo.putString("name",e);
                     storeUserInfo.commit();
                 }
             }
