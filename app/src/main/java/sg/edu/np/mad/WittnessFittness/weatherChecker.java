@@ -9,12 +9,14 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -26,6 +28,7 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.text.DecimalFormat;
 
@@ -44,19 +47,27 @@ public class weatherChecker extends AppCompatActivity implements LocationListene
     DecimalFormat df = new DecimalFormat("#.##");
 
 
-//    @Override
-//    public void setContentView(View view) {
-//        super.setContentView(view);
-//        if (ContextCompat.checkSelfPermission(weatherChecker.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-//            TextView txt = findViewById(R.id.loading);
-//            txt.setText("Please enable your location for this feature");
-//        }
-//    }
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.weather_checker);
+        if (ContextCompat.checkSelfPermission(weatherChecker.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            TextView txt = findViewById(R.id.loading);
+            txt.setText("Please enable your location for this feature");
+            txt.setTextSize(18);
+            Button backToHome = findViewById(R.id.returnToHome);
+            backToHome.setVisibility(View.VISIBLE);
+            backToHome.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    finish();
+                }
+            });
+        }
 
         Loading = (TextView) findViewById(R.id.loading);
 
@@ -73,7 +84,6 @@ public class weatherChecker extends AppCompatActivity implements LocationListene
         }
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
     }
-
     @Override
     public void onLocationChanged(Location location) {
         String tempUrl = "";
@@ -100,17 +110,23 @@ public class weatherChecker extends AppCompatActivity implements LocationListene
                     TextView temperature = findViewById(R.id.temperature);
                     TextView humidity = findViewById(R.id.humidity);
                     ImageView icon = findViewById(R.id.weatherIcon);
+                    TextView recs = findViewById(R.id.recommendation);
+                    Button returnToHome = findViewById(R.id.returnToHome2);
+
                     WeatherStatus.setVisibility(View.VISIBLE);
                     weatherDesc.setVisibility(View.VISIBLE);
                     temperature.setVisibility(View.VISIBLE);
                     humidity.setVisibility(View.VISIBLE);
                     icon.setVisibility(View.VISIBLE);
+                    recs.setVisibility(View.VISIBLE);
+                    returnToHome.setVisibility(View.VISIBLE);
 
                     WeatherStatus.setText(main + "");
                     weatherDesc.setText(description + "");
                     temperature.setText("Temperature: "+df.format(temp) + " Celcuis");
                     humidity.setText("Humidity: "+ humid + " %");
 
+<<<<<<< HEAD
 //                    if (main == "Clear") {
 //                        icon.setImageDrawable(getResources().getDrawable(R.drawable.clearsky));
 //                    } else if (main == "Clouds") {
@@ -120,6 +136,40 @@ public class weatherChecker extends AppCompatActivity implements LocationListene
 //                    } else if (main == "") {
 //
 //                    }
+=======
+                    if ( main.equals("Clear")) {
+                        icon.setImageDrawable(getResources().getDrawable(R.drawable.clearsky));
+                        recs.setText("Good weather to go outside! \n  \nRecommendations \n\n Cardio : \n - Run  \n - Swimming \n - Cycling \n\n Low Intensity Workouts \n - Walking \n Jogging");
+
+                    } else if ( main.equals("Clouds")) {
+                        if (description.equals("few clouds")){
+                            icon.setImageDrawable(getResources().getDrawable(R.drawable.partiallycloudy));
+                            recs.setText("Recommendations \n\n Cardio : \n - Run  \n - Swimming \n\n Low Intensity Workouts \n - Walking \n Jogging");
+                        }
+                        else{
+                            icon.setImageDrawable(getResources().getDrawable(R.drawable.cloudy));
+                            Log.d("Status", "Cloudy");
+                            String exercises = ("You might want to stay indoors today! \n\n Reccomendations :  \n\n - Cardio:  \n - Burpees \n - Squat jumps \n - Jump Ropes \n\n Low Intensity Workouts : \n - Yoga  ");
+                            recs.setText(exercises);
+                        }
+                    }
+                    else if (main.equals("Thunderstorm")) {
+                        icon.setImageDrawable(getResources().getDrawable(R.drawable.thunderstorm));
+                        String exercises = ("Stay indoors today! \n\n Reccomendations : \n - Cardio: \n - Burpees \n - Squat jumps \n - Jump Ropes \n\n Low Intensity Workouts : \n - Yoga ");
+                        recs.setText(exercises);
+                    } else if (main.equals("Rain")) {
+                        icon.setImageDrawable(getResources().getDrawable(R.drawable.rain));
+                        String exercises = ("Stay indoors today! \n\n Reccomendations : \n\n Cardio: \n - Burpees \n - Squat jumps \n - Jump Ropes \n\n Low Intensity Workouts : \n - Yoga ");
+                        recs.setText(exercises);
+                    }
+>>>>>>> origin/huixin
+
+                    returnToHome.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            finish();
+                        }
+                    });
 
                 } catch (JSONException e) {
                     e.printStackTrace();
