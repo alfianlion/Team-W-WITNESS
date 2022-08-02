@@ -33,6 +33,7 @@ public class ListFavourite extends AppCompatActivity {
     View view;
     ArrayList<Exercise> datalist;
     public favAdapter adapter;
+    String fav = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,15 +92,17 @@ public class ListFavourite extends AppCompatActivity {
                 String t = session.getString("title","");
                 if (task.isSuccessful()){
                     for (DataSnapshot zoneSnapshot: task.getResult().getChildren()) {
-                        String fav = zoneSnapshot.child("favourite").getValue(String.class);
+                        if (zoneSnapshot.child("favourite").exists()){
+                            fav = zoneSnapshot.child("favourite").getValue(String.class);
+                        }
                         String e = zoneSnapshot.child("type").getValue(String.class);
                         System.out.println("Object: " + e);
 
-                        if (e.equals("Running") && fav.equals("true")){
+                        if (e.equals("Running") && fav.equals("true") && !fav.equals("")){
                             Exercise r = zoneSnapshot.getValue(Running.class);
                             datalist.add(r);
                             System.out.println("Run DONE");
-                        } else if (e.equals("Workout")  && fav.equals("true")){
+                        } else if (e.equals("Workout")  && fav.equals("true") && !fav.equals("")){
                             Exercise w = zoneSnapshot.getValue(Workout.class);
                             System.out.println(w);
                             datalist.add(w);
