@@ -1,0 +1,17 @@
+- Name, Student ID, Role:
+  - Wan Rong Joshua Wong S10222829, Mobile App Developer
+    - Created Calendar Activity: to display all user events with sort date function
+    - Created FAB Alert Dialog: to allow user to register events based on date
+    - Store user registered events: in calList(calendar list) firebase database
+    - Read user registered events: from calList based on date from firebase database (utilized: Recyclerview, cardView,AlertDialog, Session, Firebase, Database, DatePicker Dialog, FloatingAction Button, Calendar)
+  - Ming Ze Ang S10203953, Back-End Lead
+    - Update name in profile page: Makes use of firebase database functions to use the input of user and update the database
+    - Reset password in profile page: Allows user to reset password via firebase authentication function which sends an email to reset password
+    - Forgot password in log in page: User can input their email and firebase authentication will send an email to allow user to reset their password
+  - Wei Lun Ong S10222794, Mobile App Developer
+    - Catalogue : Sort the exercise by date / by category
+  - Hui Xin Tan S10223047, Front-End Lead
+    - Weather API : suggest going outside or indoor for exercising through notification
+  - Muhammad Nuralfian S10228111, Project Manager
+    - View Workout : see individual workout in detail
+    - Set exercise goals : Must meet the goal set by user by the end of the week / monthly
